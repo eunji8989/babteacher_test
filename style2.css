@@ -1,0 +1,121 @@
+/* =====================
+   기본 리셋 및 레이아웃 설정
+   ===================== */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Pretendard', sans-serif;
+  background-color: #fff;
+  color: #333;
+}
+
+/* =====================
+   헤더 영역
+   ===================== */
+
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+/* 사이트 제목 SVG */
+.site-title {
+  height: 60px;
+}
+
+/* =====================
+   네비게이션 영역
+   ===================== */
+
+.navbar {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+/* 네비게이션 아이콘 SVG */
+.nav-icon {
+  width: 25px;
+  height: 25px;
+  vertical-align: middle;
+}
+
+/* 네비게이션 텍스트 SVG */
+.nav-label {
+  height: 23px;
+  margin-left: 6px;
+}
+
+/* =====================
+   사용자 정보 영역
+   ===================== */
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 사용자 이름 SVG */
+.username-svg {
+  height: 20px;
+  margin-right: 8px;
+}
+
+/* 사용자 아바타 SVG */
+.avatar-image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* =====================
+   공통 SVG 이미지 기본 스타일
+   ===================== */
+
+img.svg-label {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* =====================
+   반응형 대응 예시 (선택)
+   ===================== */
+
+@media (max-width: 768px) {
+  .site-title {
+    height: 40px;
+  }
+
+  .nav-icon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .nav-label {
+    height: 18px;
+  }
+
+  .username-svg {
+    height: 16px;
+  }
+
+  .avatar-image {
+    width: 32px;
+    height: 32px;
+  }
+}

@@ -85,7 +85,7 @@
             data.subtitle_text.replace(/\n/g, "<br>");
 
           // 동영상 링크 동적 설정
-          document.getElementById("video-link").href = data.link;
+          document.getElementById("video-link").href = data.url;
         })
         .catch(error => console.error("에러 발생:", error));
     </script>

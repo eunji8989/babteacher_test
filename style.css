@@ -41,15 +41,11 @@
 }
 
 .frame .text-wrapper {
-  top: 196px;
-  left: 508px;
-  font-family: "Inter-SemiBold", Helvetica;
-  font-weight: 600;
-  color: #000000;
-  font-size: 50px;
-  position: absolute;
-  letter-spacing: 0;
-  line-height: normal;
+    font-size: 24px; /* 적당한 크기로 글자 크기 조정 */
+    word-wrap: break-word; /* 자동 줄 바꿈 */
+    overflow: hidden; /* 넘치는 텍스트 숨기기 */
+    text-overflow: ellipsis; /* 넘치는 텍스트에 ... 추가 */
+    white-space: nowrap; /* 한 줄로 제한 */
 }
 
 

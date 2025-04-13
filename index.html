@@ -1,23 +1,68 @@
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>레시피 출력</title>
-</head>
-<body>
-  <h1 id="recipe-title"></h1>
-  <p id="recipe-subtitle"></p>
-  <p id="recipe-ingredients"></p>
+  <head>
+    <meta charset="utf-8" />
+    <title>밥선생 레시피</title>
+    <link rel="stylesheet" href="globals.css" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="frame">
+      <div class="overlap-group-wrapper">
+        <div class="overlap-group">
+          <div class="rectangle"></div>
+          <div class="div"></div>
 
-  <script>
-    fetch('https://eunji8989.github.io/babteacher/recipe.json')
-      .then(response => response.json())
-      .then(data => {
-        document.getElementById("recipe-title").textContent = data.title;
-        document.getElementById("recipe-ingredients").textContent = "재료: " + data.ingredients;
-        document.getElementById("recipe-subtitle").textContent = "레시피 순서: " + data.subtitle_text;
-      })
-      .catch(error => console.error('에러 발생:', error));
-  </script>
-</body>
+          <!-- 제목: 된장찌개 -->
+          <div class="text-wrapper" id="recipe-title">레시피 제목</div>
+
+          <div class="ellipse"></div>
+
+          <!-- 재료 -->
+          <p class="p" id="recipe-ingredients">
+            필요 재료: 로딩 중...
+          </p>
+
+          <!-- "레시피" 글자 -->
+          <div class="text-wrapper-2">레시피</div>
+
+          <!-- 레시피 순서 -->
+          <p class="text-wrapper-3" id="recipe-subtitle">
+            레시피 불러오는 중...
+          </p>
+
+          <!-- 동영상 보기 -->
+          <div class="text-wrapper-4">동영상보기</div>
+
+          <!-- 로고, UI 아이콘 등 -->
+          <img class="element" src="밥선생로고얼굴만.png" />
+          <div class="text-wrapper-5">밥선생</div>
+          <img class="line" src="밥선생상단바라인.png" />
+          <div class="profile"></div>
+          <img class="image" src="img/image.png" />
+          <div class="text-wrapper-6">사용자명</div>
+          <img class="rice-icon" src="img/rice-icon-2.png" />
+          <div class="text-wrapper-7">밥상</div>
+          <img class="search-icon" src="img/search-icon-2.png" />
+          <div class="text-wrapper-8">검색</div>
+          <img class="bookmark-icon" src="img/bookmark-icon-2.png" />
+          <div class="text-wrapper-9">기억쪽</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 🔽 JSON에서 레시피 데이터 불러오기 -->
+    <script>
+      fetch('https://eunji8989.github.io/babteacher/recipe.json')
+        .then(response => response.json())
+        .then(data => {
+          document.getElementById("recipe-title").textContent = data.title;
+          document.getElementById("recipe-ingredients").innerHTML =
+            "필요 재료: " + data.ingredients.replace(/\n/g, "<br>");
+          document.getElementById("recipe-subtitle").innerHTML =
+            data.subtitle_text.replace(/\n/g, "<br>");
+        })
+        .catch(error => console.error("에러 발생:", error));
+    </script>
+  </body>
 </html>

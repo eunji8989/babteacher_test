@@ -41,11 +41,17 @@
 }
 
 .frame .text-wrapper {
-    font-size: 24px; /* 적당한 크기로 글자 크기 조정 */
-    word-wrap: break-word; /* 자동 줄 바꿈 */
-    overflow: hidden; /* 넘치는 텍스트 숨기기 */
-    text-overflow: ellipsis; /* 넘치는 텍스트에 ... 추가 */
-    white-space: nowrap; /* 한 줄로 제한 */
+  position: absolute;
+  width: 80%; /* 화면 크기에 맞게 비율로 너비 설정 */
+  max-width: 1012px; /* 최대 너비 제한 */
+  height: auto; /* 높이를 자동으로 조정 */
+  top: 15%; /* 화면 상단에서 15% 떨어진 위치 */
+  left: 50%; /* 화면의 중앙으로 배치 */
+  transform: translateX(-50%); /* 중앙 정렬을 위해 수평으로 이동 */
+  background-color: rgba(255, 255, 255, 0.8); /* 배경색 투명도 추가 */
+  border-radius: 25px 25px 0 0; /* 위쪽 둥근 모서리 */
+  padding: 20px; /* 내부 여백 추가 */
+  box-sizing: border-box; /* 패딩을 포함한 전체 크기 계산 */
 }
 
 

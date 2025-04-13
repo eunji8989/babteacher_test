@@ -8,17 +8,14 @@
   <h1 id="recipe-title"></h1>
   <p id="recipe-subtitle"></p>
   <p id="recipe-ingredients"></p>
-  <p id="recipe-url"></p>
 
   <script>
-    // JSON 파일 로드
-    fetch('http://localhost:8000/recipe.json')  // 'recipe.json' 파일을 로드
-      .then(response => response.json())  // JSON 형식으로 파싱
+    fetch('https://eunji8989.github.io/babteacher/recipe.json')
+      .then(response => response.json())
       .then(data => {
-        // 데이터를 HTML 요소에 삽입
         document.getElementById("recipe-title").textContent = data.title;
         document.getElementById("recipe-ingredients").textContent = "재료: " + data.ingredients;
-		document.getElementById("recipe-subtitle").textContent = "레시피 순서: " + data.subtitle_text;
+        document.getElementById("recipe-subtitle").textContent = "레시피 순서: " + data.subtitle_text;
       })
       .catch(error => console.error('에러 발생:', error));
   </script>

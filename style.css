@@ -1,0 +1,270 @@
+.frame {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+}
+
+.frame .overlap-group-wrapper {
+  background-color: #ffffff;
+  width: 1920px;
+  height: 1080px;
+}
+
+.frame .overlap-group {
+  position: relative;
+  height: 1080px;
+  background-image: url(밥선생홈배경.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.frame .rectangle {
+  position: absolute;
+  width: 1920px;
+  height: 1080px;
+  top: 0;
+  left: 0;
+  background-color: #32292966;
+  opacity: 0.5;
+}
+
+.frame .div {
+  position: absolute;
+  width: 1012px;
+  height: 925px;
+  top: 155px;
+  left: 454px;
+  background-color: #ffffffcc;
+  border-radius: 25px 25px 0px 0px;
+}
+
+.frame .text-wrapper {
+  top: 196px;
+  left: 508px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 50px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+
+.frame .ellipse {
+  position: absolute;
+  width: 300px;
+  height: 300px;
+  top: 197px;
+  left: 1124px;
+  background-color: #557271;
+  border-radius: 150px;
+}
+
+.frame .p {
+  top: 312px;
+  left: 508px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 30px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .text-wrapper-2 {
+  height: 42px;
+  top: 475px;
+  left: 508px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 35px;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .text-wrapper-3 {
+  width: 357px;
+  height: 136px;
+  top: 539px;
+  left: 515px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 28px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .text-wrapper-4 {
+  height: 24px;
+  top: 509px;
+  left: 1228px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #989898;
+  font-size: 20px;
+  text-decoration: underline;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .element {
+  position: absolute;
+  width: 60px;
+  height: 96px;
+  top: 16px;
+  left: 16px;
+  object-fit: cover;
+}
+
+/*.frame .text-wrapper-5 {
+  top: 39px;
+  left: 95px;
+  font-family: "SANGJU Gyeongcheon Island-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 50px;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+} 
+*/
+
+.frame .text-wrapper-5 {
+position: absolute;
+width: 144px;
+height: 50px;
+left: 95px;
+top: 40px;
+
+font-family: 'SANGJU Gyeongcheon Island';
+font-style: normal;
+font-weight: 400;
+font-size: 50px;
+line-height: 50px;
+
+color: #FFFFFF;
+}
+
+
+.frame .line {
+  position: absolute;
+  width: 1630px;
+  height: 1px;
+  top: 78px;
+  left: 266px;
+  object-fit: cover;
+}
+
+.frame .profile {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: 24px;
+  left: 1834px;
+  background-color: #466262;
+  border-radius: 35px;
+}
+
+.frame .image {
+  position: absolute;
+  width: 34px;
+  height: 54px;
+  top: 32px;
+  left: 1852px;
+  object-fit: cover;
+}
+
+.frame .text-wrapper-6 {
+  top: 44px;
+  left: 1745px;
+  font-family: "NanumSquareRound-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 23px;
+  text-align: right;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .rice-icon {
+  position: absolute;
+  width: 30px;
+  height: 29px;
+  top: 42px;
+  left: 1310px;
+  object-fit: cover;
+}
+
+.frame .text-wrapper-7 {
+  top: 44px;
+  left: 1347px;
+  font-family: "NanumSquareRound-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 23px;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .search-icon {
+  position: absolute;
+  width: 30px;
+  height: 31px;
+  top: 42px;
+  left: 1449px;
+  object-fit: cover;
+}
+
+.frame .text-wrapper-8 {
+  top: 44px;
+  left: 1486px;
+  font-family: "NanumSquareRound-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 23px;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .bookmark-icon {
+  position: absolute;
+  width: 25px;
+  height: 31px;
+  top: 42px;
+  left: 1588px;
+  object-fit: cover;
+}
+
+.frame .text-wrapper-9 {
+  top: 44px;
+  left: 1622px;
+  font-family: "NanumSquareRound-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 23px;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}

@@ -42,16 +42,12 @@
 
 .frame .text-wrapper {
   position: absolute;
-  width: 80%; /* 화면 크기에 맞게 비율로 너비 설정 */
-  max-width: 1012px; /* 최대 너비 제한 */
-  height: auto; /* 높이를 자동으로 조정 */
-  top: 15%; /* 화면 상단에서 15% 떨어진 위치 */
-  left: 50%; /* 화면의 중앙으로 배치 */
-  transform: translateX(-50%); /* 중앙 정렬을 위해 수평으로 이동 */
-  background-color: rgba(255, 255, 255, 0.8); /* 배경색 투명도 추가 */
-  border-radius: 25px 25px 0 0; /* 위쪽 둥근 모서리 */
-  padding: 20px; /* 내부 여백 추가 */
-  box-sizing: border-box; /* 패딩을 포함한 전체 크기 계산 */
+  width: 1012px;
+  height: 925px;
+  top: 155px;
+  left: 454px;
+  background-color: #ffffffcc;
+  border-radius: 25px 25px 0px 0px;
 }
 
 

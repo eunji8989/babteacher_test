@@ -41,13 +41,15 @@
 }
 
 .frame .text-wrapper {
+  top: 196px;
+  left: 508px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 50px;
   position: absolute;
-  width: 1012px;
-  height: 925px;
-  top: 155px;
-  left: 454px;
-  background-color: #ffffffcc;
-  border-radius: 25px 25px 0px 0px;
+  letter-spacing: 0;
+  line-height: normal;
 }
 
 

@@ -2,67 +2,72 @@
 <html lang="ko">
   <head>
     <meta charset="utf-8" />
-    <title>밥선생 레시피</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>밥선생 - 된장찌개 레시피</title>
     <link rel="stylesheet" href="globals.css" />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <div class="frame">
-      <div class="overlap-group-wrapper">
+      <main class="overlap-group-wrapper">
         <div class="overlap-group">
-          <div class="rectangle"></div>
-          <div class="div"></div>
-
-          <!-- 제목: 된장찌개 -->
-          <div class="text-wrapper" id="recipe-title">레시피 제목</div>
-
-          <div class="ellipse"></div>
-
-          <!-- 재료 -->
-          <p class="p" id="recipe-ingredients">
-            필요 재료: 로딩 중...
-          </p>
-
-          <!-- "레시피" 글자 -->
-          <div class="text-wrapper-2">레시피</div>
-
-          <!-- 레시피 순서 -->
-          <p class="text-wrapper-3" id="recipe-subtitle">
-            레시피 불러오는 중...
-          </p>
-
-          <!-- 동영상 보기 -->
-          <div class="text-wrapper-4">동영상보기</div>
-
-          <!-- 로고, UI 아이콘 등 -->
-          <img class="element" src="images/밥선생로고얼굴만.png" />
-          <div class="text-wrapper-5">밥선생</div>
-          <img class="line" src="images/밥선생상단바라인.png" />
-          <div class="profile"></div>
-          <img class="image" src="img/image.png" />
-          <div class="text-wrapper-6">사용자명</div>
-          <img class="rice-icon" src="img/rice-icon-2.png" />
-          <div class="text-wrapper-7">밥상</div>
-          <img class="search-icon" src="img/search-icon-2.png" />
-          <div class="text-wrapper-8">검색</div>
-          <img class="bookmark-icon" src="img/bookmark-icon-2.png" />
-          <div class="text-wrapper-9">기억쪽</div>
+          <div class="rectangle" aria-hidden="true"></div>
+          <article class="recipe-container">
+            <h1 class="recipe-title" id="recipe-title">레시피 제목</h1>
+            <section class="ingredients">
+              <h2 class="section-title">재료</h2>
+              <p class="ingredient-list" id="recipe-ingredients">된장, 감자, 양파, 어쩌구</p>
+            </section>
+            <section class="instructions">
+              <h2 class="section-title">레시피</h2>
+              <ol class="instruction-list" id="recipe-subtitle_text">
+              </ol>
+            </section>
+            <button class="video-button">동영상보기</button>
+          </article>
+          <header class="site-header">
+            <img class="logo" src="밥선생로고아이콘.svg" alt="밥선생 로고" />
+            <img class="site-title" src="밥선생로고텍스트.svg" alt="밥선생 텍스트" />
+            <hr class="header-divider" />
+            <nav class="main-nav">
+              <ul>
+                <li>
+                  <img class="nav-icon" src="밥상아이콘.svg" alt="" />
+                  <a href="#" class="nav-link">밥상</a>
+                </li>
+                <li>
+                  <img class="nav-icon" src="검색아이콘.svg" alt="" />
+                  <a href="#" class="nav-link">검색</a>
+                </li>
+                <li>
+                  <img class="nav-icon" src="기억쪽아이콘.svg" alt="" />
+                  <a href="#" class="nav-link">기억쪽</a>
+                </li>
+              </ul>
+            </nav>
+            <div class="user-profile">
+              <span class="username">사용자명</span>
+              <div class="profile-picture">
+                <img src="사용자명아이콘.svg" alt="사용자 프로필 사진" />
+              </div>
+            </div>
+          </header>
         </div>
-      </div>
+      </main>
     </div>
-
-    <!-- 🔽 JSON에서 레시피 데이터 불러오기 -->
-    <script>
+	
+	<script>
       fetch('https://eunji8989.github.io/babteacher_test/recipe.json')
         .then(response => response.json())
         .then(data => {
           document.getElementById("recipe-title").textContent = data.title;
           document.getElementById("recipe-ingredients").innerHTML =
             "필요 재료: " + data.ingredients.replace(/\n/g, "<br>");
-          document.getElementById("recipe-subtitle").innerHTML =
+          document.getElementById("recipe-subtitle_text").innerHTML =
             data.subtitle_text.replace(/\n/g, "<br>");
         })
         .catch(error => console.error("에러 발생:", error));
     </script>
+	
   </body>
 </html>

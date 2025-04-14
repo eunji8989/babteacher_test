@@ -1,121 +1,412 @@
-/* =====================
-   기본 리셋 및 레이아웃 설정
-   ===================== */
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.frame {
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 
-body {
-  font-family: 'Pretendard', sans-serif;
-  background-color: #fff;
-  color: #333;
+.frame .overlap-group-wrapper {
+  background-color: #ffffff;
+  width: 1920px;
+  height: 1080px;
 }
 
-/* =====================
-   헤더 영역
-   ===================== */
+.frame .overlap-group {
+  position: relative;
+  height: 1080px;
+  background-image: url(images/밥선생홈배경.jpg);
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+.frame .rectangle {
+  position: absolute;
+  width: 1920px;
+  height: 1080px;
+  top: 0;
+  left: 0;
+  background-color: #32292966;
+  opacity: 0.5;
+}
+
+.frame .div {
+  position: absolute;
+  width: 1388px;
+  height: 939px;
+  top: 141px;
+  left: 266px;
+  background-color: #ffffffcc;
+  border-radius: 25px 25px 0px 0px;
+}
+
+.frame .text-wrapper {
+  width: 135px;
+  height: 43px;
+  top: 1000px;
+  left: 1481px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 28px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .text-wrapper-2 {
+  width: 107px;
+  height: 42px;
+  top: 311px;
+  left: 365px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 35px;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .text-wrapper-3 {
+  width: 1243px;
+  top: 193px;
+  left: 338px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 50px;
+  text-align: center;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .text-wrapper-4 {
+  width: 1184px;
+  top: 384px;
+  left: 365px;
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 30px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .text-wrapper-5 {
+  width: 107px;
+  height: 42px;
+  top: 539px;
+  left: 365px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 35px;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .p {
+  width: 1163px;
+  height: 133px;
+  top: 610px;
+  left: 365px;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 28px;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .element {
+  position: absolute;
+  width: 60px;
+  height: 96px;
+  top: 16px;
+  left: 16px;
+  object-fit: cover;
+}
+
+.frame .text-wrapper-6 {
+  top: 39px;
+  left: 95px;
+  font-family: "SANGJU Gyeongcheon Island-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 50px;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .line {
+  position: absolute;
+  width: 1630px;
+  height: 1px;
+  top: 78px;
+  left: 230px; /* 수정된 위치 */
+  object-fit: cover;
+}
+
+.frame .profile {
+  position: absolute;
+  width: 70px;
+  height: 70px;
+  top: 24px;
+  left: 1834px;
+  background-color: #466262;
+  border-radius: 35px;
+}
+
+.frame .image {
+  position: absolute;
+  width: 34px;
+  height: 54px;
+  top: 32px;
+  left: 1852px;
+  object-fit: cover;
+}
+
+.frame .text-wrapper-7 {
+  top: 44px;
+  left: 1745px;
+  font-family: "NanumSquareRound-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 23px;
+  text-align: right;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .rice-icon {
+  position: absolute;
+  width: 30px;
+  height: 29px;
+  top: 42px;
+  left: 1310px;
+  object-fit: cover;
+}
+
+.frame .text-wrapper-8 {
+  top: 44px;
+  left: 1347px;
+  font-family: "NanumSquareRound-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 23px;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .search-icon {
+  position: absolute;
+  width: 30px;
+  height: 31px;
+  top: 42px;
+  left: 1449px;
+  object-fit: cover;
+}
+
+.frame .text-wrapper-9 {
+  top: 44px;
+  left: 1486px;
+  font-family: "NanumSquareRound-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 23px;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+.frame .bookmark-icon {
+  position: absolute;
+  width: 25px;
+  height: 31px;
+  top: 42px;
+  left: 1588px;
+  object-fit: cover;
+}
+
+.frame .text-wrapper-10 {
+  top: 44px;
+  left: 1622px;
+  font-family: "NanumSquareRound-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 23px;
+  text-align: center;
+  white-space: nowrap;
+  position: absolute;
+  letter-spacing: 0;
+  line-height: normal;
+}
+
+/* Semantic structure and accessibility */
+.recipe-container {
+  position: absolute;
+  width: 1388px;
+  height: 939px;
+  top: 141px;
+  left: 266px;
+  background-color: #ffffffcc;
+  border-radius: 25px 25px 0px 0px;
+  padding: 52px 27px;
+}
+
+.recipe-title {
+  width: 1243px;
+  margin-bottom: 70px;
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 50px;
+  text-align: center;
+}
+
+.section-title {
+  font-family: "Inter-SemiBold", Helvetica;
+  font-weight: 600;
+  color: #000000;
+  font-size: 35px;
+  margin-bottom: 31px;
+}
+
+.ingredient-list,
+.instruction-list {
+  font-family: "Inter-Medium", Helvetica;
+  font-weight: 500;
+  color: #000000;
+  font-size: 30px;
+  margin-bottom: 124px;
+}
+
+.instruction-list {
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 28px;
+  list-style-type: decimal;
+  padding-left: 30px;
+}
+
+.video-button {
+  position: absolute;
+  bottom: 80px;
+  right: 72px;
+  background: none;
+  border: none;
+  font-family: "Inter-Regular", Helvetica;
+  font-weight: 400;
+  color: #000000;
+  font-size: 28px;
+  cursor: pointer;
+}
 
 .site-header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  border-bottom: 1px solid #eee;
 }
 
-/* 사이트 제목 SVG */
+.logo {
+  width: 60px;
+  height: 96px;
+  object-fit: cover;
+}
+
 .site-title {
-  height: 60px;
+  margin-left: 19px;
+  font-family: "SANGJU Gyeongcheon Island-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 50px;
 }
 
-/* =====================
-   네비게이션 영역
-   ===================== */
+.header-divider {
+  width: 1630px;
+  height: 1px;
+  background-color: #ffffff;
+  border: none;
+  margin: 0 0 0 155px;
+}
 
-.navbar {
+.main-nav {
+  margin-left: auto;
+}
+
+.main-nav ul {
   display: flex;
-  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main-nav li {
+  display: flex;
   align-items: center;
+  margin-right: 40px;
+}
+
+.nav-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 7px;
 }
 
 .nav-link {
-  display: flex;
-  align-items: center;
+  font-family: "NanumSquareRound-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 23px;
   text-decoration: none;
 }
 
-/* 네비게이션 아이콘 SVG */
-.nav-icon {
-  width: 25px;
-  height: 25px;
-  vertical-align: middle;
-}
-
-/* 네비게이션 텍스트 SVG */
-.nav-label {
-  height: 23px;
-  margin-left: 6px;
-}
-
-/* =====================
-   사용자 정보 영역
-   ===================== */
-
-.user-info {
+.user-profile {
   display: flex;
   align-items: center;
-  gap: 10px;
 }
 
-/* 사용자 이름 SVG */
-.username-svg {
-  height: 20px;
-  margin-right: 8px;
+.username {
+  font-family: "NanumSquareRound-Regular", Helvetica;
+  font-weight: 400;
+  color: #ffffff;
+  font-size: 23px;
+  margin-right: 19px;
 }
 
-/* 사용자 아바타 SVG */
-.avatar-image {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
+.profile-picture {
+  width: 70px;
+  height: 70px;
+  background-color: #466262;
+  border-radius: 35px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-/* =====================
-   공통 SVG 이미지 기본 스타일
-   ===================== */
-
-img.svg-label {
-  display: inline-block;
-  vertical-align: middle;
-}
-
-/* =====================
-   반응형 대응 예시 (선택)
-   ===================== */
-
-@media (max-width: 768px) {
-  .site-title {
-    height: 40px;
-  }
-
-  .nav-icon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .nav-label {
-    height: 18px;
-  }
-
-  .username-svg {
-    height: 16px;
-  }
-
-  .avatar-image {
-    width: 32px;
-    height: 32px;
-  }
+.profile-picture img {
+  width: 34px;
+  height: 54px;
+  object-fit: cover;
 }

@@ -1,28 +1,46 @@
-fetch('recipes.json')
-  .then(response => response.json())
-  .then(data => {
-    const container = document.getElementById('recipe-container');
+document.addEventListener("DOMContentLoaded", function () {
+  const recipes = [
+    {
+      id: 1,
+      name: "된장찌개",
+      ingredients: "된장, 양파, 바나나",
+      instructions: [
+        "멸치 육수를 먼저 끓여주세요.",
+        "된장을 풀고 두부와 애호박을 넣습니다.",
+        "보글보글 끓으면 마무리!"
+      ],
+      videoLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      img: "https://via.placeholder.com/200x150"
+    },
+    {
+      id: 2,
+      name: "김치찌개",
+      ingredients: "김치, 돼지고기, 두부",
+      instructions: [
+        "고기를 볶고 김치를 넣습니다.",
+        "물과 양념을 넣고 끓입니다.",
+        "두부를 넣고 한소끔 끓여 마무리!"
+      ],
+      videoLink: "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      img: "https://via.placeholder.com/200x150"
+    }
+    // 추가적인 레시피들을 여기에 삽입할 수 있습니다.
+  ];
 
-    data.forEach(recipe => {
-      const card = document.createElement('div');
-      card.className = 'recipe-card';
+  const recipeContainer = document.getElementById("recipe-list");
 
-      card.innerHTML = `
-        <img src="${recipe.thumbnail}" alt="${recipe.title}" class="thumbnail" />
-        <h2>${recipe.title}</h2>
-        <p><strong>재료:</strong> ${recipe.ingredients}</p>
-        <p><strong>카테고리:</strong> ${recipe.category}</p>
-        <p><strong>업로드일자:</strong> ${recipe.upload_date}</p>
-        <p><strong>조회수:</strong> ${recipe.views}</p>
-        <ol>
-          ${recipe.steps.map(step => `<li>${step}</li>`).join('')}
-        </ol>
-        <a href="${recipe.video}" target="_blank">🎥 동영상 보기</a>
-      `;
-
-      container.appendChild(card);
+  // 레시피 배열을 순회하며 동적으로 카드 생성
+  recipes.forEach((recipe) => {
+    const recipeCard = document.createElement("div");
+    recipeCard.classList.add("recipe");
+    recipeCard.innerHTML = `
+      <img src="${recipe.img}" alt="${recipe.name}" />
+      <div class="recipe-name">${recipe.name}</div>
+      <div class="recipe-ingredients">필요 재료: ${recipe.ingredients}</div>
+    `;
+    recipeCard.addEventListener("click", function () {
+      window.location.href = `recipe-detail.html?id=${recipe.id}`;
     });
-  })
-  .catch(error => {
-    console.error('❌ JSON 불러오기 실패:', error);
+    recipeContainer.appendChild(recipeCard);
   });
+});

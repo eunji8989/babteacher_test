@@ -19,7 +19,7 @@
   <script>
     const bookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
 
-    fetch("../data/recipes.json")  // 실제 JSON 경로로 수정 필요
+    fetch("./recipe-screen/recipes.json")  // 실제 JSON 경로로 수정 필요
       .then(response => response.json())
       .then(recipeData => {
         const listDiv = document.getElementById("bookmarkList");

@@ -1,4 +1,2 @@
 레시피 출력화면
-
-텍스트까지 출력 완료 <br>
-UI에 맞게 글자 사이즈 수정해야함
+https://eunji8989.github.io/babteacher_test/recipe-screen/recipe-screen.html?id=0

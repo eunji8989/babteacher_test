@@ -1,10 +1,15 @@
 @font-face {
-    font-family: 'Pretendard-Regular';
-      src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
-    font-family: 'SANGJUGyeongcheonIsland';
-      src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/SANGJUGyeongcheonIsland.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SANGJUGyeongcheonIsland';
+  src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/SANGJUGyeongcheonIsland.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
 }
 
 .header {
@@ -12,6 +17,7 @@
     width: 100%;
     height: 120vh;
     left: 0%;
+    /*background-image: url('background.jpg');*/
     background-color: rgba(201, 231, 232, 1);
     background-size: cover;
     background-position: center;
@@ -65,6 +71,7 @@
   
   .menu {
     font-family: 'Pretendard-Regular';
+    font-weight: bold;
     display: flex;
     align-items: center;
     margin-left: 200px;
@@ -73,6 +80,7 @@
   
   .menu a {
     font-family: 'Pretendard-Regular';
+    font-weight: bold;
     text-decoration: none;
     color: white;
     font-size: 14px;
@@ -80,6 +88,7 @@
   
   .search-button {
     font-family: 'Pretendard-Regular';
+    font-weight: bold;
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -99,6 +108,7 @@
   
   .menu2 {
     font-family: 'Pretendard-Regular';
+    font-weight: bold;
     position: fixed;
     top: 20px;
     right: 20px;
@@ -138,9 +148,9 @@
   }
   
   .nickname {
+    font-family: 'Pretendard-Regular';
     font-weight: bold;
     color: #fff;
-    text-decoration: underline;
     order: 1;
   }
   
@@ -159,6 +169,7 @@
   }
   
   .logout-button {
+    font-family: 'Pretendard-Regular';
     width: 100%;
     height: 35px;
     background-color: rgba(56, 79, 79, 1);
@@ -196,12 +207,14 @@
   }
 
   .menu-title {
+    font-family: 'Pretendard-Regular';
     font-size: 27px;
     font-weight: bold;
     color: #333;
   }
 
   .ingredients-label {
+    font-family: 'Pretendard-Regular';
     font-size: 14px;
     color: #555;
     margin-top: 20px;
@@ -209,6 +222,7 @@
   }
 
   .recipe-title {
+    font-family: 'Pretendard-Regular';
     font-size: 21px;
     font-weight: bold;
     margin: 16px 0;
@@ -216,12 +230,14 @@
   }
 
   .recipe-content {
+    font-family: 'Pretendard-Regular';
     font-size: 16px;
     line-height: 1.6;
     color: #555;
   }
 
   .recipe-right {
+    font-family: 'Pretendard-Regular';
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -240,6 +256,7 @@
   }
 
   .video-button {
+    font-family: 'Pretendard-Regular';
     background-color: none;
     color: #aaa;
     padding: 6px 12px;
@@ -250,7 +267,7 @@
   }
 
   /* 네모 박스가 포함된 상위 요소 */
-.container, .main, .section {
+  .container, .main, .section {
     overflow: visible; /* 잘림 방지 */
     position: relative; /* 필요 시 */
   }
@@ -270,6 +287,7 @@
   
   /* 모달 내부 콘텐츠 */
   .modal-content {
+    font-family: 'Pretendard-Regular';
     background-color: #fefefe;
     margin: 10% auto;
     padding: 20px;
@@ -282,6 +300,7 @@
   
   /* 닫기 버튼 */
   .close-button {
+    font-family: 'Pretendard-Regular';
     color: #aaa;
     float: right;
     font-size: 28px;

@@ -6,21 +6,22 @@
   <link rel="stylesheet" href="recipe screen design.css" />
   <title>레시피 화면</title>
 </head>
+
 <body>
     <header class="header">
         <div class="header-overlay"></div>
         <div class="header-content">
           <div class="logo">
-            <img src="images/밥선생로고아이콘.svg" alt="로고 캐릭터" />
+            <img src="밥선생 머리.png" alt="로고 캐릭터" />
             <span class="site-name">밥선생</span>
           </div>
           <nav class="menu">
-            <a href="all.html">전체</a>
-            <a href="table.html">밥상</a>
-            <a href="bookmark.html">기억쪽</a>
-            <a href="mypage.html">마이페이지</a>
-            <a href="search.html" class="search-button">
-              <img src="images/검색아이콘.svg" width="21" height="22"></img>
+            <a href="C:\Users\user\Desktop\밥선생\all.html">전체</a>
+            <a href="C:\Users\user\Desktop\밥선생\table.html">밥상</a>
+            <a href="C:\Users\user\Desktop\밥선생\bookmark.html">기억쪽</a>
+            <a href="C:\Users\user\Desktop\밥선생\mypage.html">마이페이지</a>
+            <a href="C:\Users\user\Desktop\밥선생\search.html" class="search-button">
+              <img src="search icon.png" width="21" height="22"></img>
               <span>검색어를 입력하시오.</span>
             </a>
           </nav>
@@ -28,11 +29,11 @@
             <!-- 로그인 상태에서만 보이는 프로필 + 닉네임 -->
             <div class="user-profile" id="userProfile">
                 <span class="nickname">닉네임</span>
-                <img src="images/사용자명아이콘.svg" alt="프로필" class="profile-img" />
+                <img src="profile.png" alt="프로필" class="profile-img" />
 
                 <!-- 로그아웃 드롭다운 -->
                 <div id="userMenu" class="user-menu" style="display: none;">
-                    <button class="logout-button" onclick="logout()">끊기</button>
+                    <button class="logout-button" onclick="logout()"><b>끊기</b></button>
                 </div>
             </div>
           </nav>
@@ -40,32 +41,21 @@
       </header>
 
   <div class="recipe-container">
-
-  <!-- 레시피 왼쪽 영역 -->
-  <div class="recipe-left">
-    <div class="section-title" id="recipe-title">레시피 제목</div>
-    <div class="ingredients" id="recipe-ingredients">필요재료 : 된장, 양파, 바나나</div>
-    
-    <div class="section-subtitle">레시피</div>
-    <div class="recipe-content" id="recipe-description">
-      <!-- 여기에 레시피 설명이 들어갑니다 -->
+    <div class="recipe-left">
+      <div class="menu-title">메뉴이름</div>
+      <div class="ingredients-label">필요재료 : 된장, 양파, 바나나</div>
+      <div class="recipe-title">레시피</div>
+      <div class="recipe-content">
+        <li>멸치 육수를 먼저 끓여주세요.</li>
+        <li>된장을 풀고 두부와 애호박을 넣습니다.</li>
+        <li>보글보글 끓으면 마무리!</li>
+      </div>
     </div>
-  </div>
 
-  <!-- 레시피 오른쪽 영역 -->
-  <div class="recipe-right">
-    <div class="thumbnail-circle" id="thumbnail-icon"></div>
-
-    <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-       target="_blank"
-       class="video-button"
-       id="video-link">
-      동영상보기
-    </a>
-  </div>
-
-</div>
-
+    <div class="recipe-right">
+      <div class="circle-icon"></div>
+      <a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank" class="video-button">동영상보기</a>
+    </div>
     
     <!-- 모달 영역 -->
     <div id="videoModal" class="modal">

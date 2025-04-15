@@ -58,7 +58,7 @@ document.addEventListener("DOMContentLoaded", function () {
   
 // 1. URL에서 쿼리 파라미터로 전달된 id값을 가져옴 (?id=0 이런 식)
 const urlParams = new URLSearchParams(window.location.search);
-const recipeId = parseInt(urlParams.get('id')); // 예: ?id=0
+const recipeId = urlParams.get('id'); // 예: ?id=0
 
 // 2. JSON 데이터 로드
 fetch('./recipes.json')

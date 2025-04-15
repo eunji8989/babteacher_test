@@ -69,7 +69,16 @@ fetch('./recipes.json')
   .then(data => {
     console.log('데이터:', data);
     if (Array.isArray(data) && data.length > recipeId) {
+      // 메뉴 이름 설정
       document.getElementById('menuTitle').textContent = data[recipeId].title;
+
+      // 재료 설정
+      document.getElementById('menuIngredients').textContent = '필요재료 : ' + data[recipeId].ingredients;
+
+      // 레시피 내용 설정
+      const recipeContent = data[recipeId].steps.map(step => `<li>${step}</li>`).join('');
+      document.getElementById('menuContent').innerHTML = recipeContent;
+        
     } else {
       document.getElementById('menuTitle').textContent = '레시피를 찾을 수 없습니다';
     }

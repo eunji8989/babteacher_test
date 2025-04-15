@@ -1,3 +1,5 @@
+console.log("스크립트 실행됨!");
+
 document.addEventListener("DOMContentLoaded", function () {
     const userProfile = document.getElementById("userProfile");
     const userMenu = document.getElementById("userMenu");

@@ -90,7 +90,33 @@ fetch('./recipes.json')
       document.getElementById('videoLink').href = recipe.video;
       document.getElementById('videoLink').textContent = '동영상보기';
       document.getElementById('thumbnail').src = recipe.thumbnail;
-        
+
+      // ⭐ 북마크 버튼 기능 추가
+      const bookmarkBtn = document.getElementById('bookmarkBtn');
+      let savedBookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+      let isBookmarked = savedBookmarks.includes(recipeId.toString());
+      
+      function updateButtonText() {
+        bookmarkBtn.textContent = isBookmarked ? "✅ 북마크됨" : "⭐ 북마크";
+      }
+      updateButtonText();
+
+      bookmarkBtn.addEventListener("click", () => {
+        let bookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+        const idStr = recipeId.toString();
+
+        if (bookmarks.includes(idStr)) {
+          bookmarks = bookmarks.filter(id => id !== idStr);
+          isBookmarked = false;
+        } else {
+          bookmarks.push(idStr);
+          isBookmarked = true;
+        }
+
+        localStorage.setItem("bookmarkedRecipes", JSON.stringify(bookmarks));
+        updateButtonText();
+      });
+
     } else {
       document.getElementById('menuTitle').textContent = '레시피를 찾을 수 없습니다';
     }
@@ -99,3 +125,4 @@ fetch('./recipes.json')
     console.error('JSON 로드 실패:', error);
     document.getElementById('menuTitle').textContent = '오류 발생';
   });
+

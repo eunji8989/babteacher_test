@@ -25,8 +25,12 @@
         const listDiv = document.getElementById("bookmarkList");
         listDiv.innerHTML = "";
 
-        const bookmarkedRecipes = recipeData.filter((recipe, index) => bookmarks.includes(index.toString()));
-
+        const bookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+        const bookmarkSet = new Set(bookmarks.map(id => id.toString()));
+        const bookmarkedRecipes = recipeData.filter((_, index) =>
+          bookmarkSet.has(index.toString())
+        );
+        
         if (bookmarkedRecipes.length === 0) {
           listDiv.innerHTML = "<p>북마크한 레시피가 없습니다.</p>";
         } else {

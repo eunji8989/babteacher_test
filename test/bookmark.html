@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>내 북마크</title>
+  <style>
+    body { font-family: Arial; padding: 20px; }
+    .recipe { border: 1px solid #ccc; border-radius: 8px; padding: 10px; margin-bottom: 10px; display: flex; align-items: center; }
+    .recipe img { width: 120px; height: auto; border-radius: 8px; margin-right: 15px; }
+    .recipe-info { display: flex; flex-direction: column; }
+    .recipe-title { font-size: 18px; font-weight: bold; margin-bottom: 5px; color: #333; text-decoration: none; }
+    .recipe-meta { font-size: 14px; color: #666; }
+  </style>
+</head>
+<body>
+  <h1>⭐ 북마크한 레시피 목록</h1>
+  <div id="bookmarkList">로딩 중...</div>
+
+  <script>
+    const bookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+
+    fetch("../data/recipes.json")  // 실제 JSON 경로로 수정 필요
+      .then(response => response.json())
+      .then(recipeData => {
+        const listDiv = document.getElementById("bookmarkList");
+        listDiv.innerHTML = "";
+
+        const bookmarkedRecipes = recipeData.filter((recipe, index) => bookmarks.includes(index.toString()));
+
+        if (bookmarkedRecipes.length === 0) {
+          listDiv.innerHTML = "<p>북마크한 레시피가 없습니다.</p>";
+        } else {
+          bookmarkedRecipes.forEach((recipe, index) => {
+            const recipeDiv = document.createElement("div");
+            recipeDiv.className = "recipe";
+
+            recipeDiv.innerHTML = `
+              <img src="${recipe.thumbnail}" alt="${recipe.title}">
+              <div class="recipe-info">
+                <a class="recipe-title" href="../recipe-screen/recipe-screen.html?id=${index}">
+                  ${recipe.title}
+                </a>
+                <div class="recipe-meta">
+                  🗂 카테고리: ${recipe.category} <br>
+                  👀 조회수: ${recipe.views.toLocaleString()}회 <br>
+                  📅 업로드일: ${recipe.upload_date}
+                </div>
+              </div>
+            `;
+            listDiv.appendChild(recipeDiv);
+          });
+        }
+      })
+      .catch(error => {
+        console.error("레시피 데이터를 불러오는 데 실패했습니다:", error);
+        document.getElementById("bookmarkList").innerHTML = "<p>데이터를 불러오지 못했습니다.</p>";
+      });
+  </script>
+</body>
+</html>

@@ -89,7 +89,7 @@ fetch('./recipes.json')
       // 동영상 링크 및 썸네일 업데이트
       document.getElementById('videoLink').href = recipe.video;
       document.getElementById('videoLink').textContent = '동영상보기';
-      //document.getElementById('thumbnail').src = recipe.thumbnail;
+      document.getElementById('thumbnail').src = recipe.thumbnail;
         
     } else {
       document.getElementById('menuTitle').textContent = '레시피를 찾을 수 없습니다';

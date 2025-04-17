@@ -196,7 +196,7 @@ function closeLoginModal() {
   document.getElementById("loginModal").style.display = "none";
 }
 
-function goToLogin() {
+function handleLogin() {
   const nickname = "닉네임"; // 예시
   document.querySelector(".nickname").textContent = nickname;
 

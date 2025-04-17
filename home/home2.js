@@ -163,7 +163,7 @@ document.getElementById("goToLogin").addEventListener('click', function() {
   document.getElementById('modal-login').style.display = 'block';
 });
 
-function handleLogin() {
+function goToLogin() {
   // 로그인 처리 예시
   document.getElementById("userProfile").style.display = "flex";
   document.getElementById("loginButton").style.display = "none";

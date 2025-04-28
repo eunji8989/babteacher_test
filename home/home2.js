@@ -204,10 +204,11 @@ function handleLogin() {
   document.getElementById("authButtons").style.display = "none";
   document.getElementById("userProfile").style.display = "flex";
 
-  // 수정된 부분!
-  modalLogin.style.display = "none"; // 이미 선언된 modalLogin 사용
+  // 모달 부드럽게 닫기
+  closeModalWithAnimation(modalLogin);
 
-  modalTerms.style.display = "none"; // (이건 그대로 괜찮아)
+  // 약관 모달도 혹시 열려있으면 닫기
+  modalTerms.style.display = "none";
 }
 
 function toggleUserMenu() {

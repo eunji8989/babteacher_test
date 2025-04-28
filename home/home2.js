@@ -203,7 +203,7 @@ function handleLogin() {
   // 로그인 후 전환
   document.getElementById("authButtons").style.display = "none";
   document.getElementById("userProfile").style.display = "flex";
-  document.getElementById("loginModal").style.display = "none";
+  document.getElementById("modal-terms").style.display = "none";
 }
 
 function toggleUserMenu() {

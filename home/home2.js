@@ -203,9 +203,11 @@ function handleLogin() {
   // 로그인 후 전환
   document.getElementById("authButtons").style.display = "none";
   document.getElementById("userProfile").style.display = "flex";
-  document.getElementById("loginModal").style.display = "none";
 
-  document.getElementById("modal-terms").style.display = "none";
+  // 수정된 부분!
+  modalLogin.style.display = "none"; // 이미 선언된 modalLogin 사용
+
+  modalTerms.style.display = "none"; // (이건 그대로 괜찮아)
 }
 
 function toggleUserMenu() {

@@ -8,5 +8,5 @@ https://eunji8989.github.io/babteacher_test/home/home2.html
 https://eunji8989.github.io/babteacher_test/recipe-screen/recipe-screen.html?id=0
 <br>
 레시피 출력화면 edit ver: 
-https://eunji8989.github.io/babteacher_test/recipe-screen/recipe-screen.html?id=0
+https://eunji8989.github.io/babteacher_test/recipe-screen/recipe-screen2.html?id=0
 <br><br>

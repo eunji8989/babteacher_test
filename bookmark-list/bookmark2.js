@@ -82,3 +82,28 @@ if (recipes.length === 0) {
   displayCards(currentPage);
   setupPagination();
 }
+
+const urlParams = new URLSearchParams(window.location.search);
+    const recipeId = urlParams.get('id');
+
+    // 레시피 데이터 (id, 이름, 설명, 이미지)
+    const allRecipes = [];
+    for (let i = 1; i <= 100; i++) {
+      allRecipes.push({
+        id: i,
+        name: `레시피 ${i}`,
+        img: `https://via.placeholder.com/300x200.png?text=레시피+${i}`,
+        description: `이것은 레시피 ${i}의 설명입니다.`
+      });
+    }
+
+    // 해당 레시피 찾기
+    const recipe = allRecipes.find(r => r.id === parseInt(recipeId));
+
+    if (recipe) {
+      document.getElementById('recipe-name').textContent = recipe.name;
+      document.getElementById('recipe-img').src = recipe.img;
+      document.getElementById('recipe-description').textContent = recipe.description;
+    } else {
+      document.getElementById('recipe-detail').innerHTML = '<p>레시피를 찾을 수 없습니다.</p>';
+    }

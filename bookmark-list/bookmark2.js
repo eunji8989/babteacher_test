@@ -2,6 +2,8 @@
 
 // 1. 북마크된 인덱스를 불러오기
 const bookmarkedIndexes = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+console.log(bookmarkedIndexes);  // 북마크된 인덱스 값 확인
+
 
 // 2. 전체 레시피 데이터 생성
 const allRecipes = [];

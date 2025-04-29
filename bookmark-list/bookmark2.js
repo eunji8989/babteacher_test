@@ -5,7 +5,7 @@ for (let i = 1; i <= 100; i++) {
   allRecipes.push({
     name: `레시피 ${i}`,
     img: `https://via.placeholder.com/300x200.png?text=레시피+${i}`,
-    link: `recipe screen.html`
+    link: ..\recipe-screen2.html?id=${i}`
   });
 }
 

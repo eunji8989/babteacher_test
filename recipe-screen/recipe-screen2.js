@@ -1,4 +1,4 @@
-console.log("스크립트 실행됨!");
+    console.log("스크립트 실행됨!");
 
 document.addEventListener("DOMContentLoaded", function () {
     const userProfile = document.getElementById("userProfile");
@@ -105,11 +105,20 @@ fetch('./recipes.json')
         let bookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
         const idStr = recipeId.toString();
 
-        if (bookmarks.includes(idStr)) {
-          bookmarks = bookmarks.filter(id => id !== idStr);
+        const recipeData = {
+          id: idStr,
+          title: recipe.title,
+          thumbnail: recipe.thumbnail,
+          link: window.location.href // 현재 페이지 링크 (ex: https://.../recipe-screen2.html?id=2)
+        };
+
+        const exists = bookmarks.some(b => b.id === idStr);
+
+        if (exists) {
+          bookmarks = bookmarks.filter(b => b.id !== idStr);
           isBookmarked = false;
         } else {
-          bookmarks.push(idStr);
+          bookmarks.push(recipeData);
           isBookmarked = true;
         }
 

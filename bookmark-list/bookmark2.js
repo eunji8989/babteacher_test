@@ -40,6 +40,8 @@ function displayCards(page) {
       <div class="card-content">${recipe.name}</div>
     `;
 
+    console.log(item.link);
+
     // 카드 클릭 시 레시피 화면 이동
     card.addEventListener("click", () => {
     window.location.href = item.link;

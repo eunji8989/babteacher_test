@@ -1,178 +1,103 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="home design2.css" />
-  <title>밥선생</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>회원가입 및 로그인 모달</title>
+  <link rel="stylesheet" href="styles.css" />
 </head>
-
 <body>
-  <header class="header">
-    <div class="header-overlay"></div>
-    <div class="header-content">
-      <div class="logo">
-        <img src="밥선생 머리.png" alt="로고 캐릭터" />
-        <span class="site-name">밥선생</span>
-      </div>
-      <nav class="menu">
-        <a href=".\all.html">전체</a>
-        <a href=".\table.html">밥상</a>
-        <a href=".\bookmark.html">기억쪽</a>
-        <a href=".\mypage.html">나의 공간</a>
-        <a href=".\search.html" class="search-button">
-          <img src="search icon.png" width="21" height="22" alt="검색 아이콘" />
-          <span>검색어를 입력하시오.</span>
-        </a>
-      </nav>
-      <nav class="menu2">
-        <div id="authButtons">
-          <a href="#" id="openSignup"><b>회원가입</b></a>
-          <a href="#" id="openLogin" class="login-button"><b>잇기</b></a>
-        </div>
+  <!-- 상단 메뉴 -->
+  <div id="authMenu">
+    <button id="openSignup">회원가입</button>
+    <button id="openLogin">로그인</button>
+  </div>
 
-        <!-- 로그인 후: 프로필 + 닉네임 -->
-        <div id="userProfile" class="user-profile" style="display: none;" onclick="toggleUserMenu()">
-          <span class="nickname">닉네임</span>
-          <img src="profile.png" alt="프로필" class="profile-img" />
-
-          <!-- 로그아웃 드롭다운 -->
-          <div id="userMenu" class="user-menu" style="display: none;">
-            <button class="logout-button" onclick="logout()"><b>끊기</b></button>
-          </div>
-        </div>
-      </nav>
+  <!-- 로그인된 사용자 메뉴 -->
+  <div id="userProfile" style="display: none;">
+    <img class="profile-img" src="" alt="프로필 이미지" />
+    <span class="nickname"></span>
+    <button onclick="toggleUserMenu()">▼</button>
+    <div id="userMenu" style="display: none;">
+      <button onclick="logout()">로그아웃</button>
     </div>
-  </header>
+  </div>
 
-  <!-- 약관 동의 모달 -->
+  <!-- 모달들 -->
   <div id="modal-terms" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeAll()">
-        <img src="x icon.png" alt="닫기" width="10" height="10" />
-      </span>
-      <h3>약관동의</h3>
-
-      <div class="terms-box">
-        <!-- 전체 동의 -->
-        <label class="checkbox-label">
-          <input type="checkbox" id="agreeAll" />
-          <span>아래 이용약관에 전체 동의합니다.</span>
-        </label>
-    
-        <div style="width: 100%; height: 1px; margin-top: 10px; background-color: rgba(227, 227, 227, 1);"></div>
-    
-        <!-- 서비스 이용 약관 -->
-        <label class="checkbox-label">
-          <input type="checkbox" class="terms-check" />
-          <span>서비스 이용 약관 동의</span>
-        </label>
-        <textarea class="terms-text" readonly>
-          본 서비스 이용약관(이하 "약관")은 '밥선생'(이하 "회사")이 제공하는 웹사이트 및 관련 서비스(이하 "서비스")를 이용함에 있어 회사와 이용자의 권리, 의무 및 책임 사항을 규정함을 목적으로 합니다.
-          
-          제1조 (목적)
-          본 약관은 '밥선생'이 제공하는 서비스의 이용과 관련하여 회사와 이용자의 권리, 의무, 책임사항 및 기타 필요한 사항을 규정하는 것을 목적으로 합니다.
-          
-          제2조 (정의)
-          ① "서비스"란 회사가 운영하는 웹사이트를 통해 이용자에게 제공하는 레시피 추천 및 관련 정보
-          ② "이용자"란 본 약관에 따라 회사가 제공하는 서비스를 이용하는 자
-          ③ "회원"이란 서비스에 가입하여 지속적으로 이용하는 자 회원은 자신의 계정 정보를 안전하게 관리할 책임이 있으며, 계정 정보 유출로 인해 발생하는 모든 책임은 회원 본인에게 있습니다.
-          ④ "비회원"이란 회원가입을 하지 않고 서비스를 이용하는 자
-          ⑤ "계정"이란 회원이 서비스를 이용하기 위해 설정한 로그인 정보(아이디 및 비밀번호 등)
-          ⑥ "콘텐츠"란 회사가 서비스 내에서 제공하는 텍스트, 이미지, 영상, 레시피 및 기타 정보를 의미하며, 이용자는 이를 개인적 용도로만 사용할 수 있습니다.
-          
-          제3조 (약관의 게시 및 변경)
-          - 회사는 본 약관을 서비스 초기 화면에 게시하여 이용자가 쉽게 확인할 수 있도록 합니다.
-          - 회사는 필요 시 관련 법령을 위배하지 않는 범위에서 본 약관을 변경할 수 있으며, 변경된 약관은 적용일자 7일 전부터 공지합니다.
-          - 이용자가 변경된 약관에 동의하지 않을 경우 서비스 이용을 중단하고 회원 탈퇴를 요청할 수 있습니다.
-          
-          제4조 (약관 외 준칙)
-          - 본 약관에서 정하지 않은 사항은 관계 법령 및 회사가 정한 개별 서비스 이용 정책에 따릅니다.
-          - 본 약관과 개별 서비스 이용 정책이 상충할 경우 개별 정책이 우선 적용됩니다.
-        </textarea>
-    
-        <!-- 개인정보 수집 및 이용 동의 -->
-        <label class="checkbox-label">
-          <input type="checkbox" class="terms-check" />
-          <span>개인정보 수집 및 이용 동의</span>
-        </label>
-        <textarea class="terms-text" readonly>
-          본 개인정보 수집 및 이용 동의 약관(이하 "약관")은 '밥선생'(이하 "회사")이 제공하는 웹사이트 및 관련 서비스(이하 "서비스") 이용과 관련하여 이용자의 개인정보를 수집, 이용하는 조건을 규정하는 것을 목적으로 합니다.
-
-          제1조 (개인정보 수집 및 이용 목적)
-          회사는 다음과 같은 목적을 위해 이용자의 개인정보를 수집 및 이용합니다.
-          ① 회원가입 및 관리: 회원 식별, 계정 생성, 본인 확인, 서비스 제공 및 유지관리
-          ② 서비스 제공: 맞춤형 레시피 추천, 포인트 적립 및 사용
-          ③ 서비스 개선: 서비스 품질 향상, 통계 분석, 이용 패턴 분석을 통한 맞춤형 서비스 제공
-          ④ 마케팅 및 광고 활용: 이벤트 및 프로모션 안내, 광고 제공, 서비스 이용 만족도 조사
-        </textarea>
-    
-        <!-- 개인정보 제3자 제공 동의 -->
-        <label class="checkbox-label">
-          <input type="checkbox" class="terms-check" />
-          <span>개인정보 제3자 제공 동의</span>
-        </label>
-        <textarea class="terms-text" readonly>
-          ‘밥선생’(이하 "서비스")은 이용자의 개인정보를 제3자에게 제공할 수 있으며, 이에 대한 동의를 받습니다. 서비스 이용 시 본 약관에 동의한 것으로 간주됩니다.
-
-          ① 개인정보 제공받는 자: 밥선생
-          ② 개인정보 제공 목적: 맞춤형 레시피 추천, 광고 및 마케팅 활동 등
-          ③ 개인정보 제공 항목: 이름, 이메일, 전화번호, 서비스 이용 기록 등
-          ④ 개인정보 보유 및 이용기간: 개인정보 제공 목적 달성일까지
-          ⑤ 개인정보 보호: 개인정보 제공자는 관련 법규를 준수하며, 서비스는 이를 관리하고 감독합니다.
-          ⑥ 개인정보 제공 거부 시 불이익: 서비스 이용 중 일부 제한될 수 있습니다.
-        </textarea>
-      </div>
-
-      <button id="nextToForm" disabled><strong>다음</strong></button>
-      <button id="nextToKakao"><strong>카카오계정으로 가입하기</strong></button>
+      <h2>약관 동의</h2>
+      <label><input type="checkbox" class="terms-check" /> 이용약관 동의</label>
+      <label><input type="checkbox" class="terms-check" /> 개인정보 수집 동의</label>
+      <label><input type="checkbox" id="agreeAll" /> 전체 동의</label>
+      <button id="nextToForm" disabled>다음</button>
     </div>
   </div>
 
-  <!-- 회원정보 입력 모달 -->
   <div id="modal-form" class="modal">
     <div class="modal-content">
-      <span class="close" onclick="closeAll()"><img src="x icon.png" alt="닫기" width="10" height="10" /></span>
-      <h3>회원정보 입력</h3>
-      <form id="signupForm">
-        <div id="formStep">
-          <div class="input-group with-button">
-            <input type="text" id="username" />
-            <div class="custom-placeholder">아이디</div>
-            <button class="check-btn"><b>중복확인</b></button>
-          </div>
-
-          <div class="input-group with-button">
-            <input type="text" id="nickname" />
-            <div class="custom-placeholder">닉네임</div>
-            <button class="check-btn"><b>중복확인</b></button>
-          </div>
-
-          <div class="input-group with-eye">
-            <input type="password" id="password" />
-            <div class="custom-placeholder">비밀번호</div>
-            <img src="eye icon.svg" alt="비밀번호 보기" class="eye-toggle" />
-          </div>
-
-          <div class="input-group">
-            <input type="password" id="confirmPassword" />
-            <div class="custom-placeholder">비밀번호 확인</div>
-          </div>
-
-          <div class="input-group">
-            <input type="email" id="email" />
-            <div class="custom-placeholder">이메일</div>
-          </div>
-
-          <div class="input-group">
-            <input type="text" id="phoneNumber" />
-            <div class="custom-placeholder">전화번호</div>
-          </div>
-        </div>
-
-        <button id="signupSubmit"><strong>가입하기</strong></button>
-      </form>
+      <h2>회원 정보 입력</h2>
+      <div class="input-group">
+        <input type="text" id="username" />
+        <span class="custom-placeholder">아이디</span>
+        <button class="check-btn">중복 확인</button>
+      </div>
+      <div class="input-group">
+        <input type="text" id="nickname" />
+        <span class="custom-placeholder">닉네임</span>
+        <button class="check-btn">중복 확인</button>
+      </div>
+      <div class="input-group">
+        <input type="password" id="password" />
+        <span class="custom-placeholder">비밀번호</span>
+        <img src="close eye icon.svg" onclick="togglePassword('password', this)" />
+      </div>
+      <div class="input-group">
+        <input type="password" id="confirm-password" />
+        <span class="custom-placeholder">비밀번호 확인</span>
+        <img src="close eye icon.svg" onclick="togglePassword('confirm-password', this)" />
+      </div>
+      <div class="input-group">
+        <input type="text" id="email-id" /> @
+        <select id="email-domain">
+          <option value="">직접 입력</option>
+          <option value="gmail.com">gmail.com</option>
+          <option value="naver.com">naver.com</option>
+        </select>
+        <input type="text" id="custom-domain" style="display: none;" />
+      </div>
+      <button id="nextBtn">회원가입</button>
+      <button id="backToTerms">뒤로</button>
     </div>
   </div>
+
+  <div id="modal-complete" class="modal">
+    <div class="modal-content">
+      <h2>회원가입 완료</h2>
+      <button id="goToLogin">로그인하러 가기</button>
+    </div>
+  </div>
+
+  <div id="modal-login" class="modal">
+    <div class="modal-content">
+      <h2>로그인</h2>
+      <input type="text" placeholder="아이디" />
+      <input type="password" placeholder="비밀번호" />
+      <button onclick="loginSuccess('닉네임', 'profile.jpg')">로그인</button>
+      <p><a href="#" id="loginToSignup">회원가입</a> | <a href="#" id="openFindPw">비밀번호 찾기</a></p>
+    </div>
+  </div>
+
+  <div id="modal-findpw" class="modal">
+    <div class="modal-content">
+      <h2>비밀번호 찾기</h2>
+      <input type="text" id="findPwEmail" placeholder="이메일 입력" />
+      <button id="sendPwBtn">임시 비밀번호 발송</button>
+      <p id="pwSentMsg" style="display: none;">임시 비밀번호가 전송되었습니다.</p>
+      <button id="resendPwBtn" style="display: none;">다시 보내기</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
 </body>
 </html>

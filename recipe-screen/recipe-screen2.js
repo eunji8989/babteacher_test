@@ -1,137 +1,111 @@
-    console.log("스크립트 실행됨!");
+// bookmark2.js
 
-document.addEventListener("DOMContentLoaded", function () {
-    const userProfile = document.getElementById("userProfile");
-    const userMenu = document.getElementById("userMenu");
-  
-    if (userProfile && userMenu) {
-      userProfile.addEventListener("click", function (event) {
-        event.stopPropagation(); // 클릭 이벤트 전파 방지
-        userMenu.style.display = userMenu.style.display === "block" ? "none" : "block";
-      });
-  
-      // 바깥 클릭 시 드롭다운 닫기
-      document.addEventListener("click", function (event) {
-        if (!userProfile.contains(event.target)) {
-          userMenu.style.display = "none";
-        }
-      });
+// 1. 북마크된 레시피 객체 불러오기
+const bookmarkedRecipes = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
+
+// 2. 북마크된 레시피만 추출 (필요한 형태로 매핑)
+const recipes = bookmarkedRecipes.map(recipe => ({
+  id: parseInt(recipe.id),
+  name: recipe.title,
+  img: recipe.thumbnail,
+  description: "설명이 없습니다.", // 필요 시 localStorage에 설명도 추가
+  link: recipe.link
+}));
+
+// 3. DOM 요소 참조
+const cardContainer = document.getElementById('card-container');
+const pagination = document.getElementById('pagination');
+const recipeDetail = document.getElementById('recipe-detail');
+const recipeName = document.getElementById('recipe-name');
+const recipeImg = document.getElementById('recipe-img');
+const recipeDescription = document.getElementById('recipe-description');
+
+const itemsPerPage = 20;
+let currentPage = 1;
+
+// 4. 카드 표시 함수
+function displayCards(page) {
+  cardContainer.innerHTML = '';
+  recipeDetail.style.display = 'none'; // 상세 영역 숨김
+
+  const start = (page - 1) * itemsPerPage;
+  const end = start + itemsPerPage;
+  const currentItems = recipes.slice(start, end);
+
+  currentItems.forEach(recipe => {
+    const card = document.createElement('div');
+    card.className = 'card';
+    card.innerHTML = `
+      <img src="${recipe.img}" alt="${recipe.name}">
+      <div class="card-content">${recipe.name}</div>
+    `;
+
+    // 카드 클릭 시 상세 표시
+    card.addEventListener('click', () => {
+      showRecipeDetail(recipe);
+    });
+
+    cardContainer.appendChild(card);
+  });
+}
+
+// 5. 상세 정보 표시 함수
+function showRecipeDetail(recipe) {
+  recipeName.textContent = recipe.name;
+  recipeImg.src = recipe.img;
+  recipeDescription.textContent = recipe.description;
+  recipeDetail.style.display = 'block';
+  recipeDetail.scrollIntoView({ behavior: 'smooth' });
+}
+
+// 6. 페이지네이션 함수
+function setupPagination() {
+  pagination.innerHTML = '';
+  const pageCount = Math.ceil(recipes.length / itemsPerPage);
+
+  const prevButton = document.createElement('button');
+  prevButton.textContent = '이전';
+  prevButton.disabled = currentPage === 1;
+  prevButton.addEventListener('click', () => {
+    if (currentPage > 1) {
+      currentPage--;
+      displayCards(currentPage);
+      setupPagination();
     }
   });
-  
-  // 로그아웃 처리
-  function logout() {
-    const authButtons = document.getElementById("authButtons");
-    const userProfile = document.getElementById("userProfile");
-    const userMenu = document.getElementById("userMenu");
-  
-    if (authButtons && userProfile && userMenu) {
-      authButtons.style.display = "flex";
-      userProfile.style.display = "none";
-      userMenu.style.display = "none";
-    }
-  
-    alert("로그아웃 되었습니다.");
-    window.location.href = "밥선생.html";
-  }  
-  
-  function openVideoModal() {
-    const modal = document.getElementById("videoModal");
-    const iframe = document.getElementById("videoFrame");
-    iframe.src = "https://www.youtube.com/embed/dQw4w9WgXcQ";
-    modal.style.display = "block";
+  pagination.appendChild(prevButton);
+
+  for (let i = 1; i <= pageCount; i++) {
+    const btn = document.createElement('button');
+    btn.textContent = i;
+    if (i === currentPage) btn.classList.add('active');
+    btn.addEventListener('click', () => {
+      currentPage = i;
+      displayCards(currentPage);
+      setupPagination();
+    });
+    pagination.appendChild(btn);
   }
-  
-  function closeVideoModal() {
-    const modal = document.getElementById("videoModal");
-    const iframe = document.getElementById("videoFrame");
-    iframe.src = "";
-    modal.style.display = "none";
-  }
-  
-  window.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-      closeVideoModal();
+
+  const nextButton = document.createElement('button');
+  nextButton.textContent = '다음';
+  nextButton.disabled = currentPage === pageCount;
+  nextButton.addEventListener('click', () => {
+    if (currentPage < pageCount) {
+      currentPage++;
+      displayCards(currentPage);
+      setupPagination();
     }
   });
-  
-  
-// 1. URL에서 쿼리 파라미터로 전달된 id값을 가져옴 (?id=0 이런 식)
-const urlParams = new URLSearchParams(window.location.search);
-const recipeId = parseInt(urlParams.get('id')); // 예: ?id=0
+  pagination.appendChild(nextButton);
+}
 
-// 2. JSON 데이터 로드
-fetch('./recipes.json')
-  .then(response => {
-    console.log('응답 상태:', response.status);
-    return response.json();
-  })
-  .then(data => {
-    console.log('데이터:', data);
-    if (Array.isArray(data) && data.length > recipeId) {
-      const recipe = data[recipeId];
-      
-      // 메뉴 이름 설정
-      document.getElementById('menuTitle').textContent = recipe.title;
-
-      // 재료 설정
-      document.getElementById('menuIngredients').textContent = `필요재료: ${recipe.ingredients}`;
-
-      // 레시피 내용 업데이트
-      const contentList = document.getElementById('menuContent');
-      contentList.innerHTML = ''; // 기존 내용 비우기
-      recipe.steps.forEach(step => {
-        const li = document.createElement('li');
-        li.textContent = step;
-        contentList.appendChild(li);
-      });
-
-      // 동영상 링크 및 썸네일 업데이트
-      document.getElementById('videoLink').href = recipe.video;
-      document.getElementById('videoLink').textContent = '동영상보기';
-      document.getElementById('thumbnail').src = recipe.thumbnail;
-
-      // ⭐ 북마크 버튼 기능 추가
-      const bookmarkBtn = document.getElementById('bookmarkBtn');
-      let savedBookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
-      let isBookmarked = savedBookmarks.includes(recipeId.toString());
-      
-      function updateButtonText() {
-        bookmarkBtn.textContent = isBookmarked ? "✅ 북마크됨" : "⭐ 북마크";
-      }
-      updateButtonText();
-
-      bookmarkBtn.addEventListener("click", () => {
-        let bookmarks = JSON.parse(localStorage.getItem("bookmarkedRecipes")) || [];
-        const idStr = recipeId.toString();
-
-        const recipeData = {
-          id: idStr,
-          title: recipe.title,
-          thumbnail: recipe.thumbnail,
-          link: window.location.href // 현재 페이지 링크 (ex: https://.../recipe-screen2.html?id=2)
-        };
-
-        const exists = bookmarks.some(b => b.id === idStr);
-
-        if (exists) {
-          bookmarks = bookmarks.filter(b => b.id !== idStr);
-          isBookmarked = false;
-        } else {
-          bookmarks.push(recipeData);
-          isBookmarked = true;
-        }
-
-        localStorage.setItem("bookmarkedRecipes", JSON.stringify(bookmarks));
-        updateButtonText();
-      });
-
-    } else {
-      document.getElementById('menuTitle').textContent = '레시피를 찾을 수 없습니다';
-    }
-  })
-  .catch(error => {
-    console.error('JSON 로드 실패:', error);
-    document.getElementById('menuTitle').textContent = '오류 발생';
-  });
-
+// 7. 초기 실행
+if (recipes.length === 0) {
+  cardContainer.innerHTML = '<p>북마크한 레시피가 없습니다.</p>';
+  pagination.innerHTML = '';
+  recipeDetail.style.display = 'none';
+} else {
+  displayCards(currentPage);
+  setupPagination();
+}

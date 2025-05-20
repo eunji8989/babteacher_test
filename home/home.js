@@ -12,6 +12,7 @@
 
     if (userData && userData.user && userData.user.nickname) {
       document.getElementById("welcome").innerText = `${userData.user.nickname}님 환영합니다!`;
+      goToLogin();
 
       if (isNewUser) {
         // ✅ 신규 회원인 경우 모달 띄우기

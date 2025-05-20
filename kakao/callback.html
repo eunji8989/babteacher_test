@@ -23,8 +23,7 @@
         localStorage.setItem("kakaoUser", JSON.stringify(data));
         
         // 신규회원, 기존회원 여부 저장
-        const isNew = data.hasOwnProperty("new") ? data.new : false;
-        localStorage.setItem("isNewUser", isNew ? "true" : "false");
+        localStorage.setItem("isNewUser", data.new ? "true" : "false");
   
         
         // 홈 화면으로 이동 (자신의 홈페이지 URL로 변경)

@@ -115,5 +115,51 @@
       <button type="submit" class="submit-btn">완료</button>
     </div>
   </form>
+
+  <script>
+    const form = document.getElementById('recipeForm');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault(); // 기본 폼 제출 막기
+
+      // 입력값 가져오기
+      const title = document.getElementById('title').value.trim();
+      const ingredientsText = document.getElementById('ingredients').value.trim();
+      const steps = document.getElementById('steps').value.trim();
+
+      // 재료를 쉼표(,)로 분리해서 배열로 만들기
+      const ingredients = ingredientsText.split(',').map(item => item.trim()).filter(item => item);
+
+      // 서버에 보낼 JSON 객체 만들기
+      const recipeData = {
+        title: title,
+        ingredients: ingredients,
+        text: steps
+      };
+
+      try {
+        const response = await fetch('/users_recipes', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(recipeData)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert('레시피가 성공적으로 저장되었습니다!\nID: ' + result.id);
+          form.reset(); // 폼 초기화
+        } else {
+          alert('오류: ' + result.error);
+        }
+      } catch (error) {
+        alert('서버와 통신 중 오류가 발생했습니다.');
+        console.error(error);
+      }
+    });
+  </script>
+  
 </body>
 </html>

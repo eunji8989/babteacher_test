@@ -1,4 +1,11 @@
-<script>
+
+  // 모달들
+  const modalTerms = document.getElementById("modal-terms");
+  const modalForm = document.getElementById("modal-form");
+  const modalComplete = document.getElementById("modal-complete");
+  const modalLogin = document.getElementById("modal-login");
+  const modalFindPw = document.getElementById("modal-findpw");
+
   // Kakao 로그인 사용자 정보 표시
   const userData = JSON.parse(localStorage.getItem("kakaoUser"));
   if (userData && userData.user && userData.user.nickname) {
@@ -13,12 +20,6 @@
     location.reload();
   }
 
-  // 모달들
-  const modalTerms = document.getElementById("modal-terms");
-  const modalForm = document.getElementById("modal-form");
-  const modalComplete = document.getElementById("modal-complete");
-  const modalLogin = document.getElementById("modal-login");
-  const modalFindPw = document.getElementById("modal-findpw");
 
   // 상단 버튼 이벤트
   document.getElementById("openSignup").onclick = (e) => {
@@ -261,4 +262,3 @@
     // 여기에 초기화 관련 함수들 필요 시 작성
   }
   initModalButtons();
-</script>

@@ -488,54 +488,7 @@
 </section>
   <script src="home.js"></script>
 
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const openSignup = document.getElementById("openSignup");
-    const openLogin = document.getElementById("openLogin");
-    const userProfile = document.getElementById("userProfile");
-    const authButtons = document.getElementById("authButtons");
-    const userMenu = document.getElementById("userMenu");
 
-    // 회원가입 클릭 시 (테스트용으로 alert만)
-    if (openSignup) {
-      openSignup.addEventListener("click", function (e) {
-        e.preventDefault();
-        alert("회원가입 클릭됨 (여기에 모달을 띄우세요)");
-      });
-    }
-
-    // 로그인 클릭 시
-    if (openLogin) {
-      openLogin.addEventListener("click", function (e) {
-        e.preventDefault();
-
-        // 로그인 성공 가정하고 화면 전환
-        authButtons.style.display = "none";
-        userProfile.style.display = "flex";
-      });
-    }
-
-    // 로그아웃 버튼 (끊기)
-    window.logout = function () {
-      userProfile.style.display = "none";
-      authButtons.style.display = "flex";
-    };
-
-    // 유저 프로필 클릭 시 드롭다운 토글
-    window.toggleUserMenu = function () {
-      if (userMenu.style.display === "block") {
-        userMenu.style.display = "none";
-      } else {
-        userMenu.style.display = "block";
-      }
-    };
-
-    // 전체 닫기 버튼
-    window.closeAll = function () {
-      alert("모달 닫기 기능 구현 필요");
-    };
-  });
-</script>
 
 </body>
 </html>

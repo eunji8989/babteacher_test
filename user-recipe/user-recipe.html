@@ -2,7 +2,164 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8">
+  <title>레시피 추가</title><!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
   <title>레시피 추가</title>
+  <style>
+    @font-face {
+      font-family: 'Pretendard-Regular';
+      src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+      font-weight: 400;
+      font-style: normal;
+    }
+    body {
+      font-family: 'Pretendard-Regular';
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .recipe-form {
+      background-color: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      width: 500px;
+    }
+    .recipe-form h2 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+    }
+    .form-group input,
+    .form-group textarea {
+      font-family: 'Pretendard-Regular';
+      margin: 0 auto;
+      width: 95%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      font-size: 1rem;
+      resize: none;
+    }
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+    .button-group button {
+      font-family: 'Pretendard-Regular';
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+    }
+    .cancel-btn {
+      background-color: #eee;
+    }
+    .submit-btn {
+      background-color: rgba(56, 79, 79, 1);
+      color: white;
+    }
+    .submit-btn:hover {
+      background-color: rgba(102, 124, 124, 1);
+    }
+    .cancel-btn:hover {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <form id="recipeForm" class="recipe-form">
+    <h2>레시피 추가</h2>
+
+    <div class="form-group">
+      <label for="title">제목</label>
+      <input type="text" id="title" name="title" placeholder="예: 김치찌개" />
+    </div>
+
+    <div class="form-group">
+      <label for="ingredients">재료</label>
+      <textarea id="ingredients" name="ingredients" rows="4" placeholder="예: 밥, 김, 단무지, 오이..."></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="steps">레시피</label>
+      <textarea
+        id="steps"
+        name="steps"
+        rows="6"
+        placeholder="1. 밥을 짓는다&#10;2. 재료를 썬다&#10;3. 김 위에 밥을 펴고..."
+      ></textarea>
+    </div>
+
+    <div class="button-group">
+      <button type="reset" class="cancel-btn">취소</button>
+      <button type="submit" class="submit-btn">완료</button>
+    </div>
+  </form>
+
+  <script>
+    const form = document.getElementById('recipeForm');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const title = document.getElementById('title').value.trim();
+      const ingredientsText = document.getElementById('ingredients').value.trim();
+      const steps = document.getElementById('steps').value.trim();
+
+      const ingredients = ingredientsText
+        .split(',')
+        .map((item) => item.trim())
+        .filter((item) => item);
+
+      const recipeData = {
+        title: title,
+        ingredients: ingredients,
+        text: steps,
+      };
+
+      try {
+        const response = await fetch('/users_recipes', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(recipeData),
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+          alert('레시피가 성공적으로 저장되었습니다!\nID: ' + result.id);
+          form.reset();
+        } else {
+          alert('오류: ' + result.error);
+        }
+      } catch (error) {
+        alert('서버와 통신 중 오류가 발생했습니다.');
+        console.error(error);
+      }
+    });
+  </script>
+</body>
+</html>
+
   <style>
     @font-face {
       font-family: 'Pretendard-Regular';

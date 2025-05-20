@@ -21,6 +21,10 @@
       .then(data => {
         // 로그인 정보 저장
         localStorage.setItem("kakaoUser", JSON.stringify(data));
+        
+        // 신규 가입 여부 저장
+        localStorage.setItem("isNewUser", data.new ? "true" : "false");
+        
         // 홈 화면으로 이동 (자신의 홈페이지 URL로 변경)
         window.location.href = "https://eunji8989.github.io/babteacher_test/home/home.html";
       })

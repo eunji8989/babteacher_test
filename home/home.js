@@ -23,14 +23,7 @@
         document.querySelector("#modal-complete p").innerText = "카카오 회원가입이 완료되었습니다!";
       }
 
-      if (isOriginUSer) {
-        // 기존회원 모달띄우기
-        document.getElementById("modal-complete").style.display = "block";
-        
-        // 메시지 커스터마이징
-        document.querySelector("#modal-complete h3").innerText = "로그인 완료";
-        document.querySelector("#modal-complete p").innerText = "카카오 로그인이 완료되었습니다!";
-    } 
+
   });
 
   // Kakao 로그아웃

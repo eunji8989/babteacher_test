@@ -9,7 +9,6 @@
   window.addEventListener("DOMContentLoaded", () => {
     const userData = JSON.parse(localStorage.getItem("kakaoUser"));
     const isNewUser = localStorage.getItem("isNewUser") === "true";
-    const isOriginUser = localStorage.getItem("isOriginUser") === "false";
 
     if (userData && userData.user && userData.user.nickname) {
       document.getElementById("welcome").innerText = `${userData.user.nickname}님 환영합니다!`;

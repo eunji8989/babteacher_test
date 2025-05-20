@@ -6,13 +6,25 @@
   const modalLogin = document.getElementById("modal-login");
   const modalFindPw = document.getElementById("modal-findpw");
 
-  // Kakao 로그인 사용자 정보 표시
-  const userData = JSON.parse(localStorage.getItem("kakaoUser"));
-  if (userData && userData.user && userData.user.nickname) {
-    document.getElementById("welcome").innerText = `${userData.user.nickname}님 환영합니다!`;
-  } else {
-    document.getElementById("welcome").innerText = "로그인이 필요합니다.";
-  }
+  window.addEventListener("DOMContentLoaded", () => {
+    const userData = JSON.parse(localStorage.getItem("kakaoUser"));
+    const isNewUser = localStorage.getItem("isNewUser") === "true";
+
+    if (userData && userData.user && userData.user.nickname) {
+      document.getElementById("welcome").innerText = `${userData.user.nickname}님 환영합니다!`;
+
+      if (isNewUser) {
+        // ✅ 신규 회원인 경우 모달 띄우기
+        document.getElementById("modal-complete").style.display = "block";
+
+        // ✅ 메시지 커스터마이징
+        document.querySelector("#modal-complete h3").innerText = "회원가입 완료";
+        document.querySelector("#modal-complete p").innerText = "카카오 회원가입이 완료되었습니다!";
+      }
+    } else {
+      document.getElementById("welcome").innerText = "로그인이 필요합니다.";
+    }
+  });
 
   // Kakao 로그아웃
   function kakaoLogout() {

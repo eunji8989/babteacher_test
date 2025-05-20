@@ -21,6 +21,7 @@
         document.querySelector("#modal-complete h3").innerText = "회원가입 완료";
         document.querySelector("#modal-complete p").innerText = "카카오 회원가입이 완료되었습니다!";
       }
+    }
 
 
   });

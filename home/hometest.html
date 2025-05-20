@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="home design.css" />
+  <title>밥선생</title>
+</head>
+
+<body>
+<header class="header">
+  <div class="header-overlay"></div>
+  <div class="header-content">
+    <div class="logo">
+      <img src="밥선생 머리.png" alt="로고 캐릭터" />
+      <span class="site-name">밥선생</span>
+    </div>
+    <nav class="menu">
+      <a href=".\all.html">전체</a>
+      <a href=".\table.html">밥상</a>
+      <a href="..\bookmark-list\bookmark.html">기억쪽</a>
+      <a href="..\mypage\my-information.html">나의 공간</a>
+      <a href=".\search.html" class="search-button">
+        <img src="search icon.png" width="21" height="22"></img>
+        <span>검색어를 입력하시오.</span>
+      </a>
+    </nav>
+    <nav class="menu2">
+      <div id="authButtons">
+        <a href="#" id="openSignup"><b>회원가입</b></a>
+        <a href="#" id="openLogin" class="login-button"><b>잇기</b></a>
+      </div>
+
+      <!-- 로그인 후: 프로필 + 닉네임 -->
+      <div id="userProfile" class="user-profile" style="display: none;" onclick="toggleUserMenu()">
+        <span class="nickname">닉네임</span>
+        <img src="profile.png" alt="프로필" class="profile-img" />
+
+        <!-- 로그아웃 드롭다운 -->
+        <div id="userMenu" class="user-menu" style="display: none;">
+          <button class="logout-button" onclick="logout()"><b>끊기</b></button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- 약관 동의 모달 -->
+<div id="modal-terms" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeAll()"><img src="x icon.png" alt="x icon" width="10px" height="10px"></span>
+    <h3>약관동의</h3>
+
+    <div class="terms-box">
+      <!-- 전체 동의 -->
+      <label class="checkbox-label">
+        <input type="checkbox" id="agreeAll" />
+        <span>아래 이용약관에 전체 동의합니다.</span>
+      </label>
+    
+      <div style="width: 100%; height: 1px; margin-top: 10px; background-color:rgba(227, 227, 227, 1);" /></div>
+    
+      <!-- 서비스 이용 약관 -->
+      <label class="checkbox-label">
+        <input type="checkbox" class="terms-check" />
+        <span>서비스 이용 약관 동의</span>
+      </label>
+      <textarea class="terms-text" readonly>
+본 서비스 이용약관(이하 "약관")은 '밥선생'(이하 "회사")이 제공하는 웹사이트 및 관련 서비스(이하 "서비스")를 이용함에 있어 회사와 이용자의 권리, 의무 및 책임 사항을 규정함을 목적으로 합니다.
+
+제1조 (목적)
+본 약관은 '밥선생'이 제공하는 서비스의 이용과 관련하여 회사와 이용자의 권리, 의무, 책임사항 및 기타 필요한 사항을 규정하는 것을 목적으로 합니다.
+
+제2조 (정의)
+① "서비스"란 회사가 운영하는 웹사이트를 통해 이용자에게 제공하는 레시피 추천 및 관련 정보
+② "이용자"란 본 약관에 따라 회사가 제공하는 서비스를 이용하는 자
+③ "회원"이란 서비스에 가입하여 지속적으로 이용하는 자 회원은 자신의 계정 정보를 안전하게 관리할 책임이 있으며, 계정 정보 유출로 인해 발생하는 모든 책임은 회원 본인에게 있습니다.
+④ "비회원"이란 회원가입을 하지 않고 서비스를 이용하는 자
+⑤ "계정"이란 회원이 서비스를 이용하기 위해 설정한 로그인 정보(아이디 및 비밀번호 등)
+⑥ "콘텐츠"란 회사가 서비스 내에서 제공하는 텍스트, 이미지, 영상, 레시피 및 기타 정보를 의미하며, 이용자는 이를 개인적 용도로만 사용할 수 있습니다.
+
+제3조 (약관의 게시 및 변경)
+- 회사는 본 약관을 서비스 초기 화면에 게시하여 이용자가 쉽게 확인할 수 있도록 합니다.
+- 회사는 필요 시 관련 법령을 위배하지 않는 범위에서 본 약관을 변경할 수 있으며, 변경된 약관은 적용일자 7일 전부터 공지합니다.
+- 이용자가 변경된 약관에 동의하지 않을 경우 서비스 이용을 중단하고 회원 탈퇴를 요청할 수 있습니다.
+
+제4조 (약관 외 준칙)
+- 본 약관에서 정하지 않은 사항은 관계 법령 및 회사가 정한 개별 서비스 이용 정책에 따릅니다.
+- 본 약관과 개별 서비스 이용 정책이 상충할 경우 개별 정책이 우선 적용됩니다.
+
+제5조 (서비스 이용)
+- 회사는 이용자에게 무료로 레시피 추천 및 관련 정보를 제공합니다.
+- 회사는 서비스 운영상 필요한 경우 서비스의 내용을 변경할 수 있으며, 이 경우 변경 사항을 사전에 공지합니다.
+- 회사는 시스템 점검, 장애, 천재지변 등의 사유로 인해 서비스 제공이 일시적으로 중단될 수 있습니다.
+      
+제6조 (회원가입 및 탈퇴)
+① 회원가입은 이용자가 본 약관에 동의하고 회사가 정한 절차에 따라 이루어집니다.
+② 회원은 언제든지 탈퇴를 요청할 수 있으며, 회사는 지체 없이 탈퇴를 처리합니다.
+③ 회원이 다음 각 호에 해당하는 경우, 회사는 회원의 자격을 제한 또는 박탈할 수 있습니다.
+  - 타인의 명의를 도용하여 가입한 경우
+  - 서비스 이용과 관련하여 허위 정보를 제공한 경우
+  - 법령 또는 공공질서 및 미풍양속에 반하는 행위를 한 경우
+      
+제7조 (회원정보의 변경)
+- 회원은 가입 시 등록한 정보에 변경이 있을 경우 즉시 수정해야 합니다.
+- 회원정보를 최신 상태로 유지하지 않아 발생한 불이익에 대한 책임은 회원 본인에게 있습니다.
+      
+제8조 (이용자의 의무)
+이용자는 서비스를 이용함에 있어 다음의 행위를 금지합니다.
+- 타인의 정보를 도용하는 행위
+- 서비스의 정상적인 운영을 방해하는 행위
+- 법령 및 본 약관을 위반하는 행위
+- 이용자가 위반 행위를 할 경우, 회사는 서비스 이용 제한 등의 조치를 취할 수 있습니다.
+      
+제9조 (개인정보 보호)
+- 회사는 이용자의 개인정보를 보호하기 위해 관련 법령을 준수하며, 개인정보 처리방침을 통해 개인정보 보호 정책을 명시합니다.
+- 이용자는 개인정보 변경 시 즉시 회사에 통보해야 하며, 미통보로 인한 불이익은 이용자가 부담합니다.
+      
+제10조 (책임의 제한)
+- 회사는 무료로 제공되는 서비스와 관련하여 이용자에게 발생한 손해에 대해 책임을 지지 않습니다.
+- 회사는 천재지변, 시스템 장애 등 불가항력적인 사유로 인한 서비스 중단에 대해 책임을 지지 않습니다.
+      
+제11조 (분쟁 해결)
+- 본 약관과 관련하여 회사와 이용자 간에 발생한 분쟁은 원만하게 해결하는 것을 원칙으로 합니다.
+- 해결되지 않은 분쟁은 관련 법령에 따라 관할 법원에서 해결합니다.
+      
+제12조 (기타 사항)
+- 본 약관에 명시되지 않은 사항은 관계 법령 및 회사의 정책에 따릅니다.
+- 본 약관은 2025년 MM월 DD일부터 적용됩니다.
+      </textarea>
+    
+      <!-- 개인정보 수집 및 이용 동의 -->
+      <label class="checkbox-label">
+        <input type="checkbox" class="terms-check" />
+        <span>개인정보 수집 및 이용 동의</span>
+      </label>
+      <textarea class="terms-text" readonly>
+본 개인정보 수집 및 이용 동의 약관(이하 "약관")은 '밥선생'(이하 "회사")이 제공하는 웹사이트 및 관련 서비스(이하 "서비스") 이용과 관련하여 이용자의 개인정보를 수집, 이용하는 조건을 규정하는 것을 목적으로 합니다.
+
+제1조 (개인정보 수집 및 이용 목적)
+회사는 다음과 같은 목적을 위해 이용자의 개인정보를 수집 및 이용합니다.
+① 회원가입 및 관리: 회원 식별, 계정 생성, 본인 확인, 서비스 제공 및 유지관리
+② 서비스 제공: 맞춤형 레시피 추천, 포인트 적립 및 사용
+③ 서비스 개선: 서비스 품질 향상, 통계 분석, 이용 패턴 분석을 통한 맞춤형 서비스 제공
+④ 마케팅 및 광고 활용: 이벤트 및 프로모션 안내, 광고 제공, 서비스 이용 만족도 조사
+
+제2조 (수집하는 개인정보 항목)
+회사는 다음과 같은 개인정보를 수집할 수 있습니다.
+① 회원가입 시: 이름, 이메일 주소, 비밀번호, 닉네임, 생년월일, 휴대폰 번호, 프로필 사진(선택)
+② 서비스 이용 시: 접속 IP, 쿠키, 기기 정보, 방문 기록, 이용 내역
+③ 본인 인증 시: 이름, 생년월일, 휴대전화 번호, 이동통신사, 내/외국인 여부
+④ 서비스 이용 시: 아이디, 닉네임
+
+제3조 (개인정보 처리의 원칙)
+① 회사는 이용자의 개인정보를 최소한으로 수집하며, 목적 이외의 용도로 활용하지 않습니다.
+② 회사는 이용자의 개인정보를 안전하게 보호하기 위해 기술적, 관리적, 물리적 보안 조치를 적용합니다.
+③ 회사는 이용자의 동의 없이 개인정보를 제3자에게 제공하지 않으며, 법령에서 정한 경우를 제외하고는 이용자의 사전 동의를 받습니다.
+④ 회사는 개인정보의 정확성과 최신성을 유지하기 위해 이용자가 정보를 수정할 수 있도록 합니다.
+
+제4조 (개인정보 보유 및 이용 기간)
+① 회원정보는 회원 탈퇴 시까지 보관하며, 탈퇴 후 즉시 파기합니다.
+② 법령에 따라 일정 기간 보관이 필요한 경우 관련 법령에 따릅니다.
+  - 전자상거래법: 계약 및 청약철회 관련 기록 5년 보관
+  - 전자금융거래법: 전자금융 거래기록 5년 보관
+  - 통신비밀보호법: 로그인 기록 3개월 보관
+      
+제5조 (개인정보 수집 방법)
+회사는 다음과 같은 방법으로 이용자의 개인정보를 수집합니다.
+① 홈페이지 및 서비스 내 회원가입 절차를 통해 이용자가 자발적으로 개인정보를 입력합니다.
+② 서비스 이용 중 자동으로 수집되는 개인정보(쿠키, 접속 IP 등)를 통해 수집됩니다.
+③ 본인 인증 과정에서 이동통신사 및 개인정보를 통한 인증을 진행합니다.
+④ 서비스 이용 중 발생하는 로그 데이터 및 이용 기록을 통해 수집됩니다.
+
+제6조 (이용자의 권리 및 행사 방법)
+① 이용자는 언제든지 본인의 개인정보를 열람, 수정, 삭제, 처리 정지를 요청할 수 있습니다.
+② 개인정보 변경 및 삭제 요청은 서비스 내 설정 또는 고객센터를 통해 진행할 수 있습니다.
+
+제7조 (개인정보 보호를 위한 안전조치)
+회사는 이용자의 개인정보 보호를 위해 다음과 같은 조치를 취하고 있습니다.
+① 기술적 보호조치: 데이터 암호화, 보안 프로그램 운영
+② 관리적 보호조치: 개인정보 접근 권한 관리, 정기 보안 점검
+③ 물리적 보호조치: 개인정보 저장 공간 접근 제한
+
+제8조 (개인정보 파기 절차 및 방법)
+① 회사는 개인정보 보유 기간이 경과하거나 처리 목적이 달성된 경우 즉시 해당 정보를 파기합니다.
+② 전자적 파일 형태의 정보는 복구 불가능한 방법으로 영구 삭제하며, 종이 문서는 분쇄 또는 소각하여 파기합니다.
+
+제9조 (개인정보 관련 문의)
+개인정보 보호와 관련된 문의 사항은 아래 연락처로 문의할 수 있습니다.
+- 이메일: privacy@bapseonsaeng.com
+      
+제10조 (약관의 공개)
+① 회사는 본 약관을 이용자가 쉽게 확인할 수 있도록 서비스 초기 화면 또는 별도의 연결 화면을 통해 공개합니다.
+② 약관이 변경될 경우, 변경된 약관을 최소 7일 전에 공지하며, 중요한 사항이 변경될 경우 30일 전부터 공지합니다.
+
+제11조 (약관의 변경)
+① 본 약관은 관련 법령의 개정, 서비스 정책 변경 등에 따라 개정될 수 있습니다.
+② 개정 시 최소 7일 전 공지하며, 중요한 변경 사항의 경우 30일 전 사전 공지합니다.
+
+본 약관은 2025년 MM월 DD일부터 적용됩니다.
+      </textarea>
+    
+      <!-- 개인정보 제3자 제공 동의 -->
+      <label class="checkbox-label">
+        <input type="checkbox" class="terms-check" /> 
+        <span>개인정보 제3자 제공 동의</span>
+      </label>
+      <textarea class="terms-text" readonly>
+‘밥선생’(이하 "서비스")은 이용자의 개인정보를 제3자에게 제공할 수 있으며, 이에 대한 동의를 받습니다. 서비스 이용 시 본 약관에 동의한 것으로 간주됩니다.
+
+① 개인정보 제공받는 자: 밥선생
+② 개인정보 제공 목적: 맞춤형 레시피 추천, 광고 및 마케팅 활동 등
+③ 개인정보 제공 항목: 이름, 이메일, 전화번호, 서비스 이용 기록 등
+④ 개인정보 보유 및 이용기간: 개인정보 제공 목적 달성일까지
+⑤ 개인정보 보호: 개인정보 제공자는 관련 법규를 준수하며, 서비스는 이를 관리하고 감독합니다.
+⑥ 개인정보 제공 거부 시 불이익: 서비스 이용 중 일부 제한될 수 있습니다.
+      </textarea>
+    </div>
+
+    <button id="nextToForm" disabled><strong>다음</strong></button>
+    <a href="https://kauth.kakao.com/oauth/authorize?client_id=94364a32b3b4ef944b89c6fa59cdbb73&redirect_uri=https://eunji8989.github.io/babteacher_test/kakao/callback.html&response_type=code">
+    <img src="kakao_login_medium_wide.png" alt="카카오로그인" />
+    </a>
+  </div>
+</div>
+
+  <span id="welcome" style="margin-left: 10px; font-weight: bold;"></span>
+
+<!-- 회원정보 입력 모달 -->
+<div id="modal-form" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeAll()"><img src="x icon.png" alt="x icon" width="10px" height="10px"></span>
+    <h3>회원정보 입력</h3>
+    <form id="signupForm">
+      <div id="formStep">
+        <div class="input-group with-button">
+          <input type="text" id="username" />
+          <div class="custom-placeholder">아이디</div>
+          <button class="check-btn"><b>중복확인</b></button>
+        </div>
+
+        <div class="input-group with-button">
+          <input type="text" id="nickname" />
+          <div class="custom-placeholder">닉네임</div>
+          <button class="check-btn"><b>중복확인</b></button>
+        </div>
+
+        <div class="input-group with-eye">
+          <input type="password" id="password" />
+          <div class="custom-placeholder">비밀번호</div>
+          <img src="eye icon.svg" alt="비밀번호 보기" class="eye-toggle" onclick="togglePassword('password', this)" width="10px" height="10px" />
+        </div>
+
+        <div class="input-group with-eye">
+          <input type="password" id="confirm-password" />
+          <div class="custom-placeholder">비밀번호 확인</div>
+          <img src="eye icon.svg" alt="비밀번호 보기" class="eye-toggle" onclick="togglePassword('confirm-password', this)" width="10px" height="10px" />
+        </div>
+
+        <div class="input-group email-group">
+          <input type="text" id="email-id" />
+          <div class="custom-placeholder">이메일</div>
+          <span>@</span>
+          <input type="text" id="custom-domain" style="display: none;" placeholder="도메인" />
+          <select id="email-domain">
+            <option value="">직접 입력</option>
+            <option value="naver.com">naver.com</option>
+            <option value="daum.net">daum.net</option>
+            <option value="gmail.com">gmail.com</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="button" id="backToTerms"><b>이전</b></button>
+      <button type="submit" id="nextBtn"><b>다음</b></button>
+    </form>
+  </div>
+</div>
+
+<!-- 완료 모달 -->
+<div id="modal-complete" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeAll()"><img src="x icon.png" width="10px" height="10px"></span>
+    <h3>회원가입 완료</h3>
+    <p>가입이 완료되었습니다.</p>
+    <button id="goToLogin"><b>잇기</b></button>
+  </div>
+</div>
+
+<!-- 로그인 모달 -->
+<div id="modal-login" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeAll()"><img src="x icon.png" alt="x icon" width="10px" height="10px"></span>
+    <h3>잇기</h3>
+    <div class="input-group with-button">
+      <div class="custom-placeholder">아이디</div>
+      <input type="text" id="loginId" />
+    </div>
+
+    <div class="input-group with-button">
+      <div class="custom-placeholder">비밀번호</div>
+      <input type="password" id="loginPw" />
+      <img src="eye icon.svg" alt="비밀번호 보기" class="eye-toggle" onclick="togglePassword('loginPw', this)" width="10px" height="10px" />
+    </div>
+
+    <!-- 로그인 버튼 -->
+    <button id="loginButton" onclick="handleLogin()"><b>잇기</b></button>
+
+    <button id="loginToSignup">회원가입</button>
+    <button id="openFindPw">비밀번호 찾기</button>
+  </div>
+</div>
+
+<!-- 비밀번호 찾기 모달 -->
+<div id="modal-findpw" class="modal">
+  <div class="modal-content">
+    <span class="close" onclick="closeAll()"><img src="x icon.png" alt="x icon" width="10px" height="10px"></span>
+    <h3>비밀번호 찾기</h3>
+    <p>가입한 이메일 주소를 입력하세요</p>
+    <div class="input-group with-button">
+      <div class="custom-placeholder">이메일 주소</div>
+      <input type="text" id="findPwEmail" />
+    </div>
+    <button id="sendPwBtn"><b>비밀번호 보내기</b></button>
+    <p id="pwSentMsg" style="display:none;">입력한 이메일로 비밀번호를 전송했습니다.</p><br>
+    <button id="resendPwBtn" style="display:none;">다시 보내기</button>
+  </div>
+</div>
+
+<script src="home.js"></script>
+
+<!-- 인기 레시피 모음 -->
+<section class="popular-recipes">
+  <h3>"밥선생"의 인기 레시피 모음</h3>
+  <div class="recipe-boxes">
+    <div class="recipe-card">
+      <div class="recipe-img" style="background-image: url('된장찌개.jpeg');"></div>
+        <div class="recipe-desc">
+          <h4>“된장찌개” 레시피 소개</h4>
+          <ul>
+            <li>냄비를 준비한다.</li>
+            <li>물을 붓는다.</li>
+            <li>된장 풀고 다음 양파와 감자와 된장을 넣는다.</li>
+            <li>푹 끓인다.</li>
+            <li>푹푹푹푹 끓인다.</li>
+          </ul>
+        </div>
+    </div>
+    <div class="recipe-card">
+      <div class="recipe-img"></div>
+        <div class="recipe-desc">
+          <h4>“된장찌개” 레시피 소개</h4>
+          <ul>
+            <li>냄비를 준비한다.</li>
+            <li>물을 붓는다.</li>
+            <li>된장 풀고 다음 양파와 감자와 된장을 넣는다.</li>
+            <li>푹 끓인다.</li>
+            <li>푹푹푹푹 끓인다.</li>
+          </ul>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- 추천 레시피 모음 -->
+<section class="slider-section">
+  <h3>"밥선생"의 바로 볼 수 있는 8가지 추천 레시피 모음</h3>
+  <div class="slider" id="recipeSlider">
+    <div class="slide-card">
+      <div class="slide-img"></div>
+        <div class="slide-desc">
+          <h4>된장찌개</h4>
+          <span>재료: 된장, 양파, 바나나, 숙주, 콩나물</span>
+        </div>
+    </div>
+
+    <div class="slide-card">
+      <div class="slide-img"></div>
+        <div class="slide-desc">
+          <h4>된장찌개</h4>
+          <span>재료: 된장, 양파, 바나나, 숙주, 콩나물</span>
+        </div>
+    </div>
+
+    <div class="slide-card">
+      <div class="slide-img"></div>
+        <div class="slide-desc">
+          <h4>된장찌개</h4>
+          <span>재료: 된장, 양파, 바나나, 숙주, 콩나물</span>
+        </div>
+    </div>
+
+    <div class="slide-card">
+      <div class="slide-img"></div>
+        <div class="slide-desc">
+          <h4>된장찌개</h4>
+          <span>재료: 된장, 양파, 바나나, 숙주, 콩나물</span>
+        </div>
+    </div>
+
+    <div class="slide-card">
+      <div class="slide-img"></div>
+        <div class="slide-desc">
+          <h4>된장찌개</h4>
+          <span>재료: 된장, 양파, 바나나, 숙주, 콩나물</span>
+        </div>
+    </div>
+
+    <div class="slide-card">
+      <div class="slide-img"></div>
+        <div class="slide-desc">
+          <h4>된장찌개</h4>
+          <span>재료: 된장, 양파, 바나나, 숙주, 콩나물</span>
+        </div>
+    </div>
+
+    <div class="slide-card">
+      <div class="slide-img"></div>
+        <div class="slide-desc">
+          <h4>된장찌개</h4>
+          <span>재료: 된장, 양파, 바나나, 숙주, 콩나물</span>
+        </div>
+    </div>
+
+    <div class="slide-card">
+      <div class="slide-img"></div>
+        <div class="slide-desc">
+          <h4>된장찌개</h4>
+          <span>재료: 된장, 양파, 바나나, 숙주, 콩나물</span>
+        </div>
+    </div>
+</section>
+
+<!-- 목적 -->
+<section class="purpose-section">
+  <h3>"밥선생"의 목적</h3>
+  <hr />
+  <div class="purpose-row">
+    <div class="purpose-img"></div>
+    <div class="purpose-text">
+      <strong>1. 1인 가구들을 위해</strong>
+      <p>1인 가구들을 위한 목적의 레시피 사이트를 만들었습니다.<br>어쩌구저쩌구지켜가고 있습니다.</p>
+    </div>
+  </div>
+  <hr />
+
+  <div class="purpose-row reverse">
+    <div class="purpose-text">
+      <strong>2. 1인 가구들을 위해</strong>
+      <p>1인 가구들을 위한 각적으로 레시피 사이트를 만들었습니다.<br>어쩌구저쩌구지켜가고 있습니다.</p>
+    </div>
+    <div class="purpose-img"></div>
+  </div>
+  <hr />
+
+  <div class="purpose-row">
+    <div class="purpose-img"></div>
+    <div class="purpose-text">
+      <strong>3. 1인 가구들을 위해</strong>
+      <p>1인 가구들을 위한 각적으로 레시피 사이트를 만들었습니다.<br>어쩌구저쩌구지켜가고 있습니다.</p>
+    </div>
+  </div>
+  <hr />
+</section>
+
+<!-- 차별점 -->
+<section class="difference-section">
+  <h3>다른 레시피 추천 사이트와의 차별점</h3>
+  <div class="difference-row">
+    <div class="diff-card">
+      <span class="diff-number">1</span>
+      <div class="diff-img"></div>
+      <p>다른 레시피와는 다르게 “밥선생”은 단독된 캐릭터로 차별되고 있습니다.</p>
+    </div>
+
+    <div class="diff-card">
+      <span class="diff-number">2</span>
+      <div class="diff-img"></div>
+      <p>다른 레시피와는 다르게 “밥선생”은 단독된 캐릭터로 차별되고 있습니다.</p>
+    </div>
+
+    <div class="diff-card">
+      <span class="diff-number">3</span>
+      <div class="diff-img"></div>
+      <p>다른 레시피와는 다르게 “밥선생”은 단독된 캐릭터로 차별되고 있습니다.</p>
+    </div>
+  </div>
+</section>
+  <script src="home.js"></script>
+
+
+
+</body>
+</html>

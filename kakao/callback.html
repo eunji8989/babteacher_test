@@ -6,6 +6,7 @@
 </head>
 <body>
   <p>로그인 처리 중입니다...</p>
+  
   <script>
     const code = new URLSearchParams(location.search).get("code");
 
@@ -26,6 +27,30 @@
     } else {
       document.body.innerHTML = "<h3>code 없음</h3>";
     }
+    
+  const code = new URLSearchParams(location.search).get("code");
+
+  if (code) {
+    fetch("http://localhost:5000/kakao/callback", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ code })
+    })
+    .then(res => res.json())
+    .then(data => {
+      // 로그인 정보 저장
+      localStorage.setItem("kakaoUser", JSON.stringify(data));
+      // 홈 화면으로 이동 (자신의 홈페이지 URL로 변경)
+      window.location.href = "https://eunji8989.github.io/babteacher_test/home/home.html";
+    })
+    .catch(err => {
+      document.body.innerHTML = `<h3>에러 발생</h3><pre>${err}</pre>`;
+    });
+  } else {
+    document.body.innerHTML = "<h3>code 없음</h3>";
+  }
+</script>
+
   </script>
 </body>
 </html>

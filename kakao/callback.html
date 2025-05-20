@@ -1,1 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>카카오 로그인 결과</title>
+</head>
+<body>
+  <p>로그인 처리 중입니다...</p>
+  <script>
+    const code = new URLSearchParams(location.search).get("code");
 
+    if (code) {
+      // Flask 서버로 code 전달
+      fetch("http://localhost:5000/kakao/callback", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ code })
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.body.innerHTML = `<h3>${data.message}</h3><pre>${JSON.stringify(data.user, null, 2)}</pre>`;
+      })
+      .catch(err => {
+        document.body.innerHTML = `<h3>에러 발생</h3><pre>${err}</pre>`;
+      });
+    } else {
+      document.body.innerHTML = "<h3>code 없음</h3>";
+    }
+  </script>
+</body>
+</html>

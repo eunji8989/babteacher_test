@@ -12,7 +12,7 @@
 
     if (code) {
       // Flask 서버로 code 전달
-      fetch("http://localhost:5000/kakao/callback", {
+      fetch("http://127.0.0.1:5000/kakao/callback", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ code })

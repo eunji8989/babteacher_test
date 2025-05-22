@@ -1,5 +1,5 @@
 
-  // 모달들
+ // 모달들
   const modalTerms = document.getElementById("modal-terms");
   const modalForm = document.getElementById("modal-form");
   const modalComplete = document.getElementById("modal-complete");
@@ -7,24 +7,40 @@
   const modalFindPw = document.getElementById("modal-findpw");
 
   window.addEventListener("DOMContentLoaded", () => {
-    const userData = JSON.parse(localStorage.getItem("kakaoUser"));
-    const isNewUser = localStorage.getItem("isNewUser") === "true";
+  const userData = JSON.parse(localStorage.getItem("kakaoUser"));
+  const isNewUser = localStorage.getItem("isNewUser") === "true";
+  const showWelcomeModal = localStorage.getItem("showWelcomeModal") === "true";
 
-    if (userData && userData.user && userData.user.nickname) {
-      document.getElementById("welcome").innerText = `${userData.user.nickname}님 환영합니다!`;
+  // ✅ 로그인 상태면 상단바 UI 수정
+  if (userData && userData.user && userData.user.nickname) {
+    document.getElementById("authButtons").style.display = "none";  // '회원가입', '잇기' 숨기기
+    document.getElementById("userProfile").style.display = "flex";  // '내 프로필' 보이기
 
-      if (isNewUser) {
-        // ✅ 신규 회원인 경우 모달 띄우기
-        document.getElementById("modal-complete").style.display = "block";
+    // 닉네임, 프로필 이미지 표시
+    const nickname = userData.user.nickname;
+    const profileUrl = userData.user.profile_image || "profile.png";
+    document.querySelector(".nickname").textContent = nickname;
+    document.querySelector(".profile-img").src = profileUrl;
+  }
 
-        // ✅ 메시지 커스터마이징
-        document.querySelector("#modal-complete h3").innerText = "회원가입 완료";
-        document.querySelector("#modal-complete p").innerText = "카카오 회원가입이 완료되었습니다!";
-      }
+  // ✅ 환영 모달 표시
+  if (userData && userData.user && userData.user.nickname && showWelcomeModal) {
+    const nickname = userData.user.nickname;
+    document.getElementById("modal-complete").style.display = "block";
+
+    if (isNewUser) {
+      document.querySelector("#modal-complete h3").innerText = "회원가입 완료";
+      document.querySelector("#modal-complete p").innerText = `${nickname}님, 카카오 회원가입이 완료되었습니다! 환영합니다!`;
+    } else {
+      document.querySelector("#modal-complete h3").innerText = "환영합니다";
+      document.querySelector("#modal-complete p").innerText = `${nickname}님, 다시 오신 것을 환영합니다!`;
     }
 
+    localStorage.removeItem("showWelcomeModal");
+    localStorage.removeItem("isNewUser");
+  }
+});
 
-  });
 
   // Kakao 로그아웃
   function kakaoLogout() {
@@ -44,7 +60,6 @@
     closeAll();
     modalLogin.style.display = "block";
   };
-
 
   // 약관 → 회원정보
   document.getElementById("nextToForm").onclick = () => {

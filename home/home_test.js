@@ -17,7 +17,7 @@
 
     // 닉네임, 프로필 이미지 표시
     const nickname = userData.user.nickname;
-    const profileUrl = userData.user.profile_image || "default-profile.png";
+    const profileUrl = userData.user.profile_image || "profile.png";
     document.querySelector(".nickname").textContent = nickname;
     document.querySelector(".profile-img").src = profileUrl;
   }

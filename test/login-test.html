@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>Flask 로그인 테스트</title>
+</head>
+<body>
+    <h2>회원가입</h2>
+    <input type="text" id="reg_username" placeholder="아이디">
+    <input type="password" id="reg_password" placeholder="비밀번호">
+    <button onclick="register()">회원가입</button>
+
+    <h2>로그인</h2>
+    <input type="text" id="login_username" placeholder="아이디">
+    <input type="password" id="login_password" placeholder="비밀번호">
+    <button onclick="login()">로그인</button>
+
+    <h2>보호된 페이지 접근</h2>
+    <button onclick="accessProtected()">접근</button>
+
+    <p id="output"></p>
+
+    <script>
+        let token = '';
+
+        function register() {
+            const username = document.getElementById("reg_username").value;
+            const password = document.getElementById("reg_password").value;
+
+            fetch("http://localhost:5000/register", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({username, password})
+            })
+            .then(res => res.json())
+            .then(data => document.getElementById("output").innerText = data.message);
+        }
+
+        function login() {
+            const username = document.getElementById("login_username").value;
+            const password = document.getElementById("login_password").value;
+
+            fetch("http://localhost:5000/login", {
+                method: "POST",
+                headers: {"Content-Type": "application/json"},
+                body: JSON.stringify({username, password})
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.access_token) {
+                    token = data.access_token;
+                    document.getElementById("output").innerText = data.message;
+                } else {
+                    document.getElementById("output").innerText = data.message;
+                }
+            });
+        }
+
+        function accessProtected() {
+            fetch("http://localhost:5000/protected", {
+                method: "GET",
+                headers: {
+                    "Authorization": "Bearer " + token
+                }
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.logged_in_as) {
+                    document.getElementById("output").innerText = "접근 성공: " + data.logged_in_as;
+                } else {
+                    document.getElementById("output").innerText = "접근 실패: 로그인 필요";
+                }
+            });
+        }
+    </script>
+</body>
+</html>

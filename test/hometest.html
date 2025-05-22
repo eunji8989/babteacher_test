@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="..\home\home design.css" />
+  <link rel="stylesheet" href=".\css\home design.css" />
   <title>밥선생</title>
 </head>
 
@@ -11,25 +11,20 @@
 <header class="header">
   <div class="header-overlay"></div>
   <div class="header-content">
-    <div class="logo">
-      <img src="..\home\밥선생 머리.png" alt="로고 캐릭터" />
+    <a href="home_test.html" class="logo">
+      <img src=".\image\밥선생 머리.png" alt="로고 캐릭터" />
       <span class="site-name">밥선생</span>
-    </div>
-
-
+    </a>
     <nav class="menu">
-      <a href="..\home\home.html" class="protected-link">처음으로</a>
-      <a href=".\table.html" class="protected-link">밥상</a>
-      <a href="..\bookmark-list\bookmark.html" class="protected-link">기억쪽</a>
-      <a href="..\mypage\my-information.html" class="protected-link">나의 공간</a>
-      <a href="..\search.html" class="search-button">
-        <img src="..\home\search icon.png" width="21" height="22"></img>
+      <a href=".\all.html">전체</a>
+      <a href=".\table.html">밥상</a>
+      <a href="..\bookmark-list\bookmark.html">기억쪽</a>
+      <a href="..\mypage\my-information.html">나의 공간</a>
+      <a href="..\search\search.html" class="search-button">
+        <img src=".\image\search icon.png" width="21" height="22"></img>
         <span>검색어를 입력하시오.</span>
       </a>
     </nav>
-
-
-    
     <nav class="menu2">
       <div id="authButtons">
         <a href="#" id="openSignup"><b>회원가입</b></a>
@@ -53,7 +48,7 @@
 <!-- 약관 동의 모달 -->
 <div id="modal-terms" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeAll()"><img src="..\home\x icon.png" alt="x icon" width="10px" height="10px"></span>
+    <span class="close" onclick="closeAll()"><img src="x icon.png" alt="x icon" width="10px" height="10px"></span>
     <h3>약관동의</h3>
 
     <div class="terms-box">
@@ -224,7 +219,7 @@
 
     <button id="nextToForm" disabled><strong>다음</strong></button>
     <a href="https://kauth.kakao.com/oauth/authorize?client_id=94364a32b3b4ef944b89c6fa59cdbb73&redirect_uri=https://eunji8989.github.io/babteacher_test/kakao/callback.html&response_type=code">
-    <img src="..\home\kakao_login_medium_wide.png" alt="카카오로그인" />
+    <img src="kakao_login_medium_wide.png" alt="카카오로그인" />
     </a>
   </div>
 </div>
@@ -234,7 +229,7 @@
 <!-- 회원정보 입력 모달 -->
 <div id="modal-form" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeAll()"><img src="..\home\x icon.png" alt="x icon" width="10px" height="10px"></span>
+    <span class="close" onclick="closeAll()"><img src="x icon.png" alt="x icon" width="10px" height="10px"></span>
     <h3>회원정보 입력</h3>
     <form id="signupForm">
       <div id="formStep">
@@ -253,13 +248,13 @@
         <div class="input-group with-eye">
           <input type="password" id="password" />
           <div class="custom-placeholder">비밀번호</div>
-          <img src="..\home\eye icon.svg" alt="비밀번호 보기" class="eye-toggle" onclick="togglePassword('password', this)" width="10px" height="10px" />
+          <img src="eye icon.svg" alt="비밀번호 보기" class="eye-toggle" onclick="togglePassword('password', this)" width="10px" height="10px" />
         </div>
 
         <div class="input-group with-eye">
           <input type="password" id="confirm-password" />
           <div class="custom-placeholder">비밀번호 확인</div>
-          <img src="..\home\eye icon.svg" alt="비밀번호 보기" class="eye-toggle" onclick="togglePassword('confirm-password', this)" width="10px" height="10px" />
+          <img src="eye icon.svg" alt="비밀번호 보기" class="eye-toggle" onclick="togglePassword('confirm-password', this)" width="10px" height="10px" />
         </div>
 
         <div class="input-group email-group">
@@ -285,7 +280,7 @@
 <!-- 완료 모달 -->
 <div id="modal-complete" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeAll()"><img src="..\home\x icon.png" width="10px" height="10px"></span>
+    <span class="close" onclick="closeAll()"><img src="x icon.png" width="10px" height="10px"></span>
     <h3>회원가입 완료</h3>
     <p>가입이 완료되었습니다.</p>
     <button id="goToLogin"><b>잇기</b></button>
@@ -295,7 +290,7 @@
 <!-- 로그인 모달 -->
 <div id="modal-login" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeAll()"><img src="..\home\x icon.png" alt="x icon" width="10px" height="10px"></span>
+    <span class="close" onclick="closeAll()"><img src="x icon.png" alt="x icon" width="10px" height="10px"></span>
     <h3>잇기</h3>
     <div class="input-group with-button">
       <div class="custom-placeholder">아이디</div>
@@ -305,11 +300,14 @@
     <div class="input-group with-button">
       <div class="custom-placeholder">비밀번호</div>
       <input type="password" id="loginPw" />
-      <img src="..\home\eye icon.svg" alt="비밀번호 보기" class="eye-toggle" onclick="togglePassword('loginPw', this)" width="10px" height="10px" />
+      <img src="eye icon.svg" alt="비밀번호 보기" class="eye-toggle" onclick="togglePassword('loginPw', this)" width="10px" height="10px" />
     </div>
 
     <!-- 로그인 버튼 -->
     <button id="loginButton" onclick="handleLogin()"><b>잇기</b></button>
+    <a href="https://kauth.kakao.com/oauth/authorize?client_id=94364a32b3b4ef944b89c6fa59cdbb73&redirect_uri=https://eunji8989.github.io/babteacher_test/kakao/callback.html&response_type=code">
+    <img src="kakao_login_medium_wide.png" alt="카카오로그인" />
+    </a>
 
     <button id="loginToSignup">회원가입</button>
     <button id="openFindPw">비밀번호 찾기</button>
@@ -319,7 +317,7 @@
 <!-- 비밀번호 찾기 모달 -->
 <div id="modal-findpw" class="modal">
   <div class="modal-content">
-    <span class="close" onclick="closeAll()"><img src="..\home\x icon.png" alt="x icon" width="10px" height="10px"></span>
+    <span class="close" onclick="closeAll()"><img src="x icon.png" alt="x icon" width="10px" height="10px"></span>
     <h3>비밀번호 찾기</h3>
     <p>가입한 이메일 주소를 입력하세요</p>
     <div class="input-group with-button">
@@ -332,8 +330,7 @@
   </div>
 </div>
 
-</section>
-  <script src="..\test\hometest.js"></script>
+<script src=".\js\hometest.js"></script>
 
 </body>
 </html>

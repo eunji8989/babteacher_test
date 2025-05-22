@@ -9,6 +9,7 @@ const modalFindPw = document.getElementById("modal-findpw");
 window.addEventListener("DOMContentLoaded", () => {
   const userData = JSON.parse(localStorage.getItem("kakaoUser"));
   const isNewUser = localStorage.getItem("isNewUser") === "true";
+  // !! 결과값이 문자열이 아니면 true여도 false로 나올 수 있음
   const showWelcomeModal = localStorage.getItem("showWelcomeModal") === "true";
 
   // ✅ 로그인 상태면 UI 변경

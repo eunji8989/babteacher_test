@@ -73,6 +73,27 @@
     modalTerms.style.display = "block";
   };
 
+  // 서비스 이용 약관 불러오기
+  fetch('./txt/service-terms.txt')
+    .then(response => response.text())
+    .then(text => {
+      document.getElementById('service-terms').value = text;
+    });
+
+  // 개인정보 수집 및 이용 동의 불러오기
+  fetch('./txt/collect-terms.txt')
+    .then(response => response.text())
+    .then(text => {
+      document.getElementById('privacy-terms').value = text;
+    });
+
+  // 개인정보 제3자 제공 동의 불러오기
+  fetch('./txt/provide-terms.txt')
+    .then(response => response.text())
+    .then(text => {
+      document.getElementById('privacy-terms').value = text;
+    });
+
   // 약관 전체 동의 기능
   const agreeAll = document.getElementById("agreeAll");
   const checks = document.querySelectorAll(".terms-check");

@@ -1,27 +1,30 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>밥선생</title>
-  <!-- 🔗 스타일시트 링크 -->
+
+  <!-- ✅ 외부 CSS 파일 연결 -->
   <link rel="stylesheet" href="home-design.css" />
 </head>
 
 <body>
 
-  <!-- ✅ 헤더 영역 -->
+  <!-- ✅ HEADER 컴포넌트: 사이트 상단바 -->
   <header class="header">
+    <!-- 헤더 오버레이 배경 -->
     <div class="header-overlay"></div>
-    <div class="header-content">
 
-      <!-- 🔹 로고 및 사이트명 -->
+    <!-- 헤더 콘텐츠 영역 -->
+    <div class="header-content">
+      <!-- 사이트 로고 영역 -->
       <a href="home_test.html" class="logo">
         <img src="./image/밥선생 머리.png" alt="로고 캐릭터" />
         <span class="site-name">밥선생</span>
       </a>
 
-      <!-- 🔹 메인 메뉴 -->
+      <!-- ✅ 메인 메뉴 네비게이션 -->
       <nav class="menu">
         <a href="./all.html">전체</a>
         <a href="./table.html">밥상</a>
@@ -33,19 +36,19 @@
         </a>
       </nav>
 
-      <!-- 🔹 인증/회원 정보 영역 -->
+      <!-- ✅ 로그인/회원가입 또는 사용자 정보 영역 -->
       <nav class="menu2">
+        <!-- 비로그인 시 보이는 버튼 -->
         <div id="authButtons">
           <a href="#" id="openSignup"><b>회원가입</b></a>
           <a href="#" id="openLogin" class="login-button"><b>잇기</b></a>
         </div>
 
-        <!-- 로그인 후 표시되는 사용자 프로필 -->
+        <!-- 로그인 시 보이는 프로필 메뉴 -->
         <div id="userProfile" class="user-profile" style="display: none;" onclick="toggleUserMenu()">
           <span class="nickname">닉네임</span>
           <img src="./image/profile.png" alt="프로필" class="profile-img" />
-
-          <!-- 🔸 드롭다운 로그아웃 버튼 -->
+          <!-- 사용자 메뉴 드롭다운 -->
           <div id="userMenu" class="user-menu" style="display: none;">
             <button class="logout-button" onclick="logout()"><b>끊기</b></button>
           </div>
@@ -54,56 +57,50 @@
     </div>
   </header>
 
-  <!-- ✅ 약관 동의 모달 -->
+  <!-- ✅ MODAL 컴포넌트: 회원가입 시 약관 동의 모달창 -->
   <div id="modal-terms" class="modal">
     <div class="modal-content">
-      <!-- ❌ 닫기 버튼 -->
+      <!-- 모달 닫기 버튼 -->
       <span class="close" onclick="closeAll()">
-        <img src="./image/x icon.png" alt="x icon" width="10" height="10">
+        <img src="./image/x icon.png" alt="x icon" width="10" height="10" />
       </span>
+
       <h3>약관동의</h3>
 
+      <!-- 약관 선택 영역 -->
       <div class="terms-box">
-        <!-- 🔹 전체 약관 동의 -->
+        <!-- 전체 동의 -->
         <label class="checkbox-label">
           <input type="checkbox" id="agreeAll" />
           <span>아래 이용약관에 전체 동의합니다.</span>
         </label>
 
+        <!-- 구분선 -->
         <div style="width: 100%; height: 1px; margin-top: 10px; background-color:rgba(227, 227, 227, 1);"></div>
 
-        <!-- 🔹 서비스 이용 약관 -->
+        <!-- 개별 약관 -->
         <label class="checkbox-label">
           <input type="checkbox" class="terms-check" />
           <span>서비스 이용 약관 동의</span>
         </label>
-        <textarea id="service-terms" class="terms-text" readonly>
-        <!-- 서비스 이용 약관 전문 내용 -->
-        </textarea>
+        <textarea id="service-terms" class="terms-text" readonly></textarea>
 
-        <!-- 🔹 개인정보 수집 및 이용 동의 -->
         <label class="checkbox-label">
           <input type="checkbox" class="terms-check" />
           <span>개인정보 수집 및 이용 동의</span>
         </label>
-        <textarea id="collect-terms" class="terms-text" readonly>
-        <!-- 개인정보 수집 및 이용 동의 전문 내용 -->
-        </textarea>
+        <textarea id="collect-terms" class="terms-text" readonly></textarea>
 
-        <!-- 🔹 개인정보 제3자 제공 동의 -->
         <label class="checkbox-label">
-          <input type="checkbox" class="terms-check" /> 
+          <input type="checkbox" class="terms-check" />
           <span>개인정보 제3자 제공 동의</span>
         </label>
-        <textarea id="provide-terms" class="terms-text" readonly>
-        <!-- 개인정보 제3자 제 동의 전문 내용 -->
-        </textarea>
-        
+        <textarea id="provide-terms" class="terms-text" readonly></textarea>
       </div>
     </div>
   </div>
 
-  <script>'hometest.js'</script>
-  
+  <script src="hometest.js"></script>
+
 </body>
 </html>

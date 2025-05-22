@@ -116,13 +116,8 @@
       e.preventDefault();
 
       const title = document.getElementById('title').value.trim();
-      const ingredientsText = document.getElementById('ingredients').value.trim();
+      const ingredients = document.getElementById('ingredients').value.trim();
       const steps = document.getElementById('steps').value.trim();
-
-      const ingredients = ingredientsText
-        .split(',')
-        .map((item) => item.trim())
-        .filter((item) => item);
 
       const recipeData = {
         title: title,

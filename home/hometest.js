@@ -30,10 +30,8 @@
     localStorage.removeItem("showWelcomeModal");
     localStorage.removeItem("isNewUser");  // 옵션: isNewUser도 초기화
   }
-});
-
-
   });
+
 
   // Kakao 로그아웃
   function kakaoLogout() {

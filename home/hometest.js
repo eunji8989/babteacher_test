@@ -11,17 +11,24 @@
     const isNewUser = localStorage.getItem("isNewUser") === "true";
 
     if (userData && userData.user && userData.user.nickname) {
-      document.getElementById("welcome").innerText = `${userData.user.nickname}님 환영합니다!`;
+  const nickname = userData.user.nickname;
 
-      if (isNewUser) {
-        // ✅ 신규 회원인 경우 모달 띄우기
-        document.getElementById("modal-complete").style.display = "block";
+  // welcome 문구를 모달에 표시하도록 변경
+  if (isNewUser) {
+    // ✅ 신규 회원인 경우 모달 띄우기
+    document.getElementById("modal-complete").style.display = "block";
 
-        // ✅ 메시지 커스터마이징
-        document.querySelector("#modal-complete h3").innerText = "회원가입 완료";
-        document.querySelector("#modal-complete p").innerText = "카카오 회원가입이 완료되었습니다!";
-      }
-    }
+    // ✅ 메시지 커스터마이징
+    document.querySelector("#modal-complete h3").innerText = "회원가입 완료";
+    document.querySelector("#modal-complete p").innerText = `${nickname}님, 카카오 회원가입이 완료되었습니다! 환영합니다!`;
+  } else {
+    // ✅ 기존 회원인 경우도 모달로 환영 메시지 띄우기 (선택 사항)
+    document.getElementById("modal-complete").style.display = "block";
+    document.querySelector("#modal-complete h3").innerText = "환영합니다";
+    document.querySelector("#modal-complete p").innerText = `${nickname}님, 다시 오신 것을 환영합니다!`;
+  }
+}
+
 
 
   });

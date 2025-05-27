@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="mypage.css" />
+  <title>내 정보</title>
+</head>
+<body>
+  <div class="sidebar">
+    <div class="top-section">
+      <div class="logo">
+        <img src="bab%20hair.png" alt="로고 캐릭터" />
+        <span class="site-name">밥선생</span>
+      </div>
+    </div>
+
+    <div class="middle-section">
+      <div class="profile-wrapper">
+        <img src="profile.png" alt="프로필 사진" class="profile-img" id="mainProfileImg">
+        <button class="profile-edit-btn" id="openModalBtn">프로필 변경</button>
+      </div>
+      <div class="username">사용자명</div>
+    </div>
+
+<!-- 프로필 모달창 -->
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <h3>프로필 변경</h3>
+    <img src="profile.png" class="modal-profile-img" id="previewImg">
+    <input type="file" accept="image/*" class="file-input" id="fileInput">
+    <div class="modal-actions">
+      <button class="cancel-btn">취소</button>
+      <button class="confirm-btn">변경</button>
+    </div>
+  </div>
+</div>
+
+    <div class="menu">
+      <button class="active">내 정보</button>
+      <button onclick="location.href='bookmark.html'">기억쪽</button>
+      <button onclick="location.href='my history.html'">나의 이력</button>
+      <hr>
+    </div>
+    <div class="menu2">
+      <button onclick="location.href='inquiry.html'">문의</button>
+      <hr>
+      <button onclick="location.href='home.html'">끊기</button>
+    </div>
+  </div>
+
+  <div class="main-content">
+    <div class="section-title">기본정보</div>
+    <div class="info-box">
+      <div class="info-row"><span>사용자명</span><button id="openUsernameModalBtn">변경</button></div>
+      <div class="info-row"><span>이메일 주소</span><span>abcdefghij@naver.com <button id="openEmailModalBtn">변경</button></span></div>
+      <div class="info-row"><span>가입일</span><span>2025.05.22 </span></div>
+    </div>
+
+    <!-- 사용자명 변경 모달 -->
+<div class="modal-overlay2" id="usernameModal">
+  <div class="modal2">
+    <h3>사용자명 변경</h3>
+    <p>현재 사용자명: <strong id="currentUsername">사용자명</strong></p>
+
+    <div class="input-group">
+      <label>변경할 사용자명</label>
+      <div class="input-with-btn">
+        <input type="text" id="newUsername" placeholder="새 사용자명 입력">
+        <button id="checkDuplicateBtn">중복확인</button>
+      </div>
+    </div>
+
+    <div class="modal-actions2">
+      <button class="cancel-btn2">취소</button>
+      <button class="confirm-btn2" id="confirmUsernameBtn">변경</button>
+    </div>
+  </div>
+</div>
+
+<!-- 변경 완료 알림 -->
+<div id="usernameChangeAlert" class="alert">사용자명이 변경되었습니다.</div>
+
+      <!-- 이메일 변경 모달 -->
+<div class="modal-overlay3" id="emailModal">
+  <div class="modal3">
+    <h3>이메일 변경</h3>
+    <p>현재 이메일: <strong id="currentEmail">현재 이메일</strong></p>
+
+    <div class="input-group">
+      <label>변경할 이메일</label>
+      <div class="input-with-btn">
+        <input type="text" id="newEmail" placeholder="변경할 이메일 입력">
+        <button id="checkDuplicateBtn2">중복확인</button>
+      </div>
+    </div>
+
+    <div class="modal-actions3">
+      <button class="cancel-btn3">취소</button>
+      <button class="confirm-btn3" id="confirmEmailBtn">변경</button>
+    </div>
+  </div>
+</div>
+
+<!-- 변경 완료 알림 -->
+<div id="emailChangeAlert" class="alert2">이메일이 변경되었습니다.</div>
+
+    <div class="section-title2">업데이트 정보 수신 동의</div>
+    <div class="toggle-box">
+      <label>이메일 정보 수신 동의</label>
+      <div class="toggle-switch active"></div>
+    </div>
+
+    <div class="section-title2">내 정보 보안</div>
+    <div class="pw-box">
+      <label>비밀번호 변경</label>
+      <button>변경</button>
+    </div>
+
+    <div class="withdraw" onclick="location.href='withdraw.html'">회원탈퇴</div>
+  </div>
+  
+<script src="mypage.js"></script>
+</body>
+</html>

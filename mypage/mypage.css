@@ -1,0 +1,511 @@
+@font-face {
+  font-family: 'Pretendard-Regular';
+  src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SANGJUGyeongcheonIsland';
+  src: url('https://gcore.jsdelivr.net/gh/projectnoonnu/noonfonts_2112@1.0/SANGJUGyeongcheonIsland.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+     body {
+      display: flex;
+      height: 100vh;
+      position: relative;
+      background-color: rgba(201, 231, 232, 1);
+    }
+
+    /* 배경 오버레이 */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.2);
+      z-index: 2;
+    }
+
+
+/* 왼쪽 상단 정렬 */
+.top-section {
+  align-self: flex-start;
+}
+
+/* 가운데 정렬 */
+.middle-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  margin-top: 40px;
+}
+
+    .sidebar {
+      width: 30%;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 20px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      z-index: 2;
+    }
+
+    .logo {
+      font-family: 'SANGJUGyeongcheonIsland';
+      display: flex;
+      align-items: center;
+      color: #405f5c;
+      font-size: 20px;
+      z-index: 3;
+    }
+
+    .logo img {
+        width: 24px;
+        height: 39px;
+        margin-right: 10px;
+        z-index: 3;
+    }
+
+    .username {
+      font-family: 'Pretendard-Regular';
+      font-weight: bold;
+      font-size: 25px;
+      margin-bottom: 90px;
+      z-index: 3;
+    }
+
+.profile-wrapper {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  margin-bottom: 20px;
+}
+
+.profile-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.profile-edit-btn {
+  font-family: 'Pretendard-Regular';
+  position: absolute;
+  bottom: -10px;
+  right: -20px;
+  background-color: rgba(255, 255, 255, 0.8);
+  font-size: 12px;
+  padding: 5px 8px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  display: none;
+}
+
+/* Hover 시 노출 */
+.profile-wrapper:hover .camera-icon,
+.profile-wrapper:hover .profile-edit-btn {
+  display: block;
+}
+
+/* 프로필 모달 */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.modal {
+  background: #fff;
+  padding: 20px 30px;
+  border-radius: 10px;
+  width: 300px;
+  text-align: center;
+  z-index: 100000;
+  position: relative;
+}
+
+.modal-profile-img {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+
+.file-input {
+  margin-bottom: 15px;
+}
+
+.modal-actions button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+.cancel-btn {
+  background: rgba(209, 209, 209, 1);
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+.confirm-btn {
+  background: rgba(56, 79, 79, 1);
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+    .menu {
+      width: 100%;
+    }
+
+    .menu button {
+      font-family: 'Pretendard-Regular';
+      width: 100%;
+      padding: 15px;
+      font-size: 18px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-radius: 8px;
+      z-index: 3;
+    }
+
+    .menu button.active {
+      font-family: 'Pretendard-Regular';
+      background-color: #405f5c;
+      color: white;
+      font-weight: bold;
+      z-index: 4;
+    }
+
+    .menu2 {
+      width: 100%;
+    }
+
+    .menu2 button {
+      font-family: 'Pretendard-Regular';
+      width: 100%;
+      padding: 15px;
+      font-size: 15px;
+      border: none;
+      background: none;
+      cursor: pointer;
+      border-radius: 8px;
+      z-index: 4;
+    }
+
+    .menu2 button.active {
+      font-family: 'Pretendard-Regular';
+      background-color: #405f5c;
+      color: white;
+      font-weight: bold;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #ccc;
+      margin: 10px 0;
+      z-index: 4;
+    }
+
+    .main-content {
+      flex: 1;
+      padding: 40px;
+      overflow-y: auto;
+      z-index: 4;
+    }
+
+    .section-title {
+      font-family: 'Pretendard-Regular';
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 15px;
+      color: white;
+      z-index: 4;
+    }
+
+    .section-title2 {
+      font-family: 'Pretendard-Regular';
+      font-size: 20px;
+      font-weight: bold;
+      margin-top: 70px;
+      margin-bottom: 15px;
+      color: white;
+      z-index: 4;
+    }
+
+    .info-box {
+      font-family: 'Pretendard-Regular';
+      background: white;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 20px;
+      z-index: 4;
+    }
+
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      z-index: 5;
+    }
+
+    .info-row:last-child {
+      border-bottom: none;
+    }
+
+    .info-row span {
+      font-family: 'Pretendard-Regular';
+      font-size: 15px;
+    }
+
+    .info-row button {
+      font-family: 'Pretendard-Regular';
+      background: #405f5c;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .input-with-btn {
+  display: flex;
+  gap: 5px;
+  margin-top: 5px;
+}
+
+.input-with-btn input {
+  flex: 1;
+  padding: 6px;
+}
+
+.input-with-btn button {
+  padding: 6px 10px;
+  background-color: #888;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* 모달 공통 */
+.modal-overlay2 {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal2 {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  width: 350px;
+  text-align: center;
+}
+
+.modal-actions2 {
+  margin-top: 20px;
+}
+
+.modal-actions2 button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.cancel-btn2 {
+  background: rgba(209, 209, 209, 1);
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+.confirm-btn2 {
+  background: rgba(56, 79, 79, 1);
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+/* 알림 */
+.alert {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(56, 79, 79, 0.3);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 999;
+}
+
+/* 모달 공통 */
+.modal-overlay3 {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw; height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.modal3 {
+  background: #fff;
+  padding: 25px 30px;
+  border-radius: 10px;
+  width: 350px;
+  text-align: center;
+}
+
+.modal-actions3 {
+  margin-top: 20px;
+}
+
+.modal-actions3 button {
+  margin: 0 5px;
+  padding: 6px 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.cancel-btn3 {
+  background: rgba(209, 209, 209, 1);
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+.confirm-btn3 {
+  background: rgba(56, 79, 79, 1);
+  color: white;
+  border-radius: 10px;
+  border: none;
+}
+
+/* 알림 */
+.alert2 {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(56, 79, 79, 0.3);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  z-index: 999;
+}
+
+    .toggle-box {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      z-index: 10;
+    }
+
+    .toggle-box label {
+      font-family: 'Pretendard-Regular';
+      font-size: 15px;
+    }
+
+    .pw-box {
+      font-family: 'Pretendard-Regular';
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 15px 20px;
+      background: white;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      font-size: 15px;
+      z-index: 10;
+    }
+
+    .pw-box button {
+      font-family: 'Pretendard-Regular';
+      background: #405f5c;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .withdraw {
+      font-family: 'Pretendard-Regular';
+      text-align: left;
+      font-size: 14px;
+      margin-top: 30px;
+      margin-left: 10px;
+      color: #fff;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+
+    .toggle-switch {
+      width: 50px;
+      height: 25px;
+      background: #ccc;
+      border-radius: 25px;
+      position: relative;
+      cursor: pointer;
+    }
+
+    .toggle-switch::after {
+      content: '';
+      width: 23px;
+      height: 23px;
+      background: white;
+      border-radius: 50%;
+      position: absolute;
+      top: 1px;
+      left: 1px;
+      transition: left 0.3s;
+    }
+
+    .toggle-switch.active {
+      background: #405f5c;
+    }
+
+    .toggle-switch.active::after {
+      left: 26px;
+    }

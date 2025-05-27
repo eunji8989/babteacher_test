@@ -1,5 +1,5 @@
 홈화면: 
-https://eunji8989.github.io/babteacher_test/home/home.html
+https://eunji8989.github.io/babteacher_test/home/home_test.html
 <br><br>
 홈화면test: 
 https://eunji8989.github.io/babteacher_test/test/hometest.html
